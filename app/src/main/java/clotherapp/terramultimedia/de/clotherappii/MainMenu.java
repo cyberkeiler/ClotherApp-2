@@ -46,9 +46,18 @@ public class MainMenu extends Activity {
             }
         });
 
+        FloatingActionButton btnNewOutfit = (FloatingActionButton) findViewById(R.id.btnNewOutfit);
+        btnNewOutfit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenu.this, NewOutfit.class);
+                startActivity(i);
+            }
+        });
+
         TextView appIcon = (TextView) findViewById(R.id.appIcon);
 
-        FloatingActionButton btnLogout = (FloatingActionButton) findViewById(R.id.pink_icon);
+        //FloatingActionButton btnLogout = (FloatingActionButton) findViewById(R.id.pink_icon);
 
         appIcon.setTypeface(fontawesome);
 

@@ -1,17 +1,60 @@
 package clotherapp.terramultimedia.de.clotherappii;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import de.ovgu.cse.se.ClotherAPI.exceptions.OccasionNotFoundException;
+import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAuthenticatedException;
+import de.ovgu.cse.se.ClotherAPI.models.Occasion;
 
 
-public class NewOutfit extends ActionBarActivity {
+public class NewOutfit extends Activity {
+    private String[] TestItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_outfit);
+
+
+        ListView occ_list = (ListView) findViewById(R.id.OccListView);
+
+        try {
+            List<Occasion> all_occ = MainMenu.provider.getOccasions();
+
+            List<String> temp = new ArrayList<String>();
+
+            for (Iterator<Occasion> i = all_occ.iterator(); i.hasNext(); ) {
+                Occasion o = i.next();
+                temp.add(o.getName());
+            }
+
+            TestItems = new String[temp.size()];
+            temp.toArray(TestItems);
+
+        } catch (OccasionNotFoundException e) {
+            e.printStackTrace();
+            TestItems = new String[]{"Occasion nicht gefunden!"};
+        } catch (UserNotAuthenticatedException e) {
+            e.printStackTrace();
+            TestItems = new String[]{"Du hast leider nicht genug Rechte!"};
+        }
+        populateListView();
+    }
+
+    private void populateListView() {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.da_item, TestItems);
+
+        ListView occ_list = (ListView) findViewById(R.id.OccListView);
+        occ_list.setAdapter(adapter);
     }
 
     @Override
