@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 
 public class VoteLoop extends Activity {
@@ -13,6 +14,12 @@ public class VoteLoop extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote_loop);
+
+        Button btnhot2 = (Button) findViewById(R.id.hot2);
+        Button btnnot2 = (Button) findViewById(R.id.not2);
+        btnhot2.setTypeface(MainMenu.fontawesome);
+        btnnot2.setTypeface(MainMenu.fontawesome);
+
     }
 
     @Override

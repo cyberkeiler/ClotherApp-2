@@ -21,11 +21,15 @@ import de.ovgu.cse.se.ClotherAPI.models.User;
 
 public class MainMenu extends Activity {
     public IObjectProvider provider;
+    public static Typeface fontawesome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        //Lade Schrift für Icons!
+        fontawesome = Typeface.createFromAsset( getAssets(), "fontawesome.ttf" );
 
         provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.MOCKUP);
         User user = provider.getUser();
@@ -48,8 +52,8 @@ public class MainMenu extends Activity {
 
         FloatingActionButton btnLogout = (FloatingActionButton) findViewById(R.id.pink_icon);
 
-        Typeface font = Typeface.createFromAsset( getAssets(), "fontawesome.ttf" );
-        appIcon.setTypeface(font);
+        appIcon.setTypeface(fontawesome);
+
     }
 
     @Override

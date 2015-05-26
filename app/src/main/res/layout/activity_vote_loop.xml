@@ -26,4 +26,26 @@
         android:textColor="@color/color_red"
         android:layout_alignTop="@+id/btnhot"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/icon_heart"
+        android:id="@+id/hot2"
+        android:textSize="@dimen/fonsize_big"
+        android:textColor="@color/white"
+        android:background="@color/pink"
+        android:layout_below="@+id/btnnot"
+        android:layout_alignEnd="@+id/btnhot" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/icon_not"
+        android:id="@+id/not2"
+        android:textSize="@dimen/fonsize_big"
+        android:textColor="@color/color_white"
+        android:background="@color/color_black"
+        android:layout_below="@+id/btnnot"
+        android:layout_alignStart="@+id/btnnot" />
 </RelativeLayout>
