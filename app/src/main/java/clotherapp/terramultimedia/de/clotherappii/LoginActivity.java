@@ -32,6 +32,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
+import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
+import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
+import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
 import de.ovgu.cse.se.ClotherAPI.models.Gender;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
@@ -96,9 +100,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 //Einfacher Loginversuch
 
                 //TODO: dynamische Eingabewerte der Loginmaske übernehmen
-                Login("wolfi@joop.com", "heidi");
+                //Login("wolfi@joop.com", "heidi");
 
-                //attemptLogin();
+                attemptLogin();
             }
         });
 
@@ -165,12 +169,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
@@ -275,6 +277,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         private final String mEmail;
         private final String mPassword;
+        private IObjectProvider provider;
 
         UserLoginTask(String email, String password) {
             mEmail = email;
@@ -284,14 +287,17 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
+            provider = ObjectProviderFactory
+                    .getObjectProvider(ConfigurationContext.TEST);
 
             try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
+                provider.authenticate(mEmail, mPassword);
+            } catch (UserdataNotCorrectException e) {
+                e.printStackTrace();
                 return false;
             }
 
+            /*
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
@@ -299,6 +305,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     return pieces[1].equals(mPassword);
                 }
             }
+            */
 
             // TODO: register the new account here.
             return true;
