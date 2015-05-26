@@ -44,10 +44,12 @@ public class MainMenu extends Activity {
             }
         });
 
+        TextView appIcon = (TextView) findViewById(R.id.appIcon);
+
         FloatingActionButton btnLogout = (FloatingActionButton) findViewById(R.id.pink_icon);
 
         Typeface font = Typeface.createFromAsset( getAssets(), "fontawesome.ttf" );
-        //btnLogout.setTypeface(font);
+        appIcon.setTypeface(font);
     }
 
     @Override
