@@ -62,11 +62,13 @@ public class MainMenu extends Activity {
         //Lade Schrift für Icons!
         fontawesome = Typeface.createFromAsset( getAssets(), "fontawesome.ttf" );
 
+        // Begrüßungstext und Creditscore
         TextView textWelcome = (TextView) findViewById(R.id.textWelcome);
         TextView textScore = (TextView) findViewById(R.id.textscore);
+        user = provider.getUser();
         if (user != null) {
-            textWelcome.setText("Hallo " + user.getEmail() + "!");
-            //textScore.setText(user.getCreditscore());
+            //textWelcome.setText("Hallo " + user.getFirstname() + "!");
+            textScore.setText(user.getCreditscore());
         } else
             textWelcome.setText("Kein User!");
 
@@ -89,6 +91,17 @@ public class MainMenu extends Activity {
         });
 
         TextView appIcon = (TextView) findViewById(R.id.appIcon);
+
+        //Logout
+        Button btnLogout = (Button) findViewById(R.id.btnlogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                //Beende Verbindung zu API
+                provider.closeConnection();
+                //Beende MainMenu Activity -> Zurück zum Login
+                finish();
+            }
+        });
 
         //FloatingActionButton btnLogout = (FloatingActionButton) findViewById(R.id.pink_icon);
 
