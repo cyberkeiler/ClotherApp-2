@@ -271,8 +271,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      * the user.
      */
 
-
-    //TODO: Aufgabe für Christian: UserLoginTask sieht gut aus (inkl. Progressbar!) anpassen!
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;

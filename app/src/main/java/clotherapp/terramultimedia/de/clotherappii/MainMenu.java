@@ -21,7 +21,8 @@ public class MainMenu extends Activity {
     public static Typeface fontawesome;
     public static User user;
 
-
+    private TextView textWelcome;
+    private TextView textScore;
 
 
 
@@ -33,15 +34,19 @@ public class MainMenu extends Activity {
         //Lade Schrift für Icons!
         fontawesome = Typeface.createFromAsset( getAssets(), "fontawesome.ttf" );
 
+
         // Begrüßungstext und Creditscore
-        TextView textWelcome = (TextView) findViewById(R.id.textWelcome);
-        TextView textScore = (TextView) findViewById(R.id.textscore);
-        user = provider.getUser();
+        textWelcome = (TextView) findViewById(R.id.textWelcome);
+        textScore = (TextView) findViewById(R.id.textscore);
         if (user != null) {
-            //textWelcome.setText("Hallo " + user.getFirstname() + "!");
-            //textScore.setText(user.getCreditscore());
-        } else
-            textWelcome.setText("Kein User!");
+            textWelcome.setText("Hallo " + user.getFirstname() + "!");
+            textScore.setText(user.getCreditscore());
+        } else {
+            Intent i = new Intent(MainMenu.this, LoginActivity.class);
+            //Animation zum MainMenu
+            overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
+            startActivity(i);
+        }
 
 
         Button btnStartVoteLoop = (Button) findViewById(R.id.btnStart);
@@ -82,6 +87,18 @@ public class MainMenu extends Activity {
 
     }
 
+    protected void onResume() {
+        if (user != null) {
+            textWelcome.setText("Hallo " + user.getFirstname() + "!");
+            textScore.setText(user.getCreditscore());
+        } else {
+            Intent i = new Intent(MainMenu.this, LoginActivity.class);
+            //Animation zum MainMenu
+            overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
+            startActivity(i);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -103,6 +120,9 @@ public class MainMenu extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
     /*public class LoadUserData extends AsyncTask<String, String, String>{
 
