@@ -5,8 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -25,11 +25,16 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
+import de.ovgu.cse.se.ClotherAPI.models.Gender;
+import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
 /**
@@ -63,7 +68,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         //Lade Schrift für Icons!
         MainMenu.fontawesome = Typeface.createFromAsset(getAssets(), "fontawesome.ttf");
 
-        MainMenu.InitialSetup();
+        InitialSetup();
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -91,18 +96,20 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 //Einfacher Loginversuch
 
 
-                try {
-                    //TODO: dynamische Eingabewerte der Loginmaske übernehmen
-                    MainMenu.user = MainMenu.provider.authenticate("wolfi@joop.com", "heidi");
-                } catch (UserdataNotCorrectException e) {
-                    //TODO: Fehlerexception
-                }
 
-                if (MainMenu.provider.getUser() != null) {
-                    //Wenn getuser() gesetzt ist, dann war Login spätestens erfolgreich
-                    Intent i = new Intent(LoginActivity.this, MainMenu.class);
-                    startActivity(i);
-                }
+                    //TODO: dynamische Eingabewerte der Loginmaske übernehmen
+                tryLogin("wolfi@joop.com", "heidi", null);
+                    /*
+                    MainMenu.user = MainMenu.provider.authenticate("wolfi@joop.com", "heidi");
+
+                    if (MainMenu.provider.getUser() != null) {
+                        //Wenn getuser() gesetzt ist, dann war Login spätestens erfolgreich
+                        Intent i = new Intent(LoginActivity.this, MainMenu.class);
+                        startActivity(i);
+                    }*/
+
+
+
                 //attemptLogin();
             }
         });
@@ -322,6 +329,76 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    private class LoginParameters {
+        String username;
+        String password;
+        Context context;
+    }
+
+    public void tryLogin(String username, String password, Context context) {
+
+        LoginParameters parameters = new LoginParameters();
+        parameters.username = username;
+        parameters.password = password;
+        parameters.context = context;
+
+        new AsyncTask<LoginParameters, Void, Boolean>() {
+            @Override
+            protected Boolean doInBackground(LoginParameters... params) {
+                try {
+                    MainMenu.provider.authenticate(
+                            params[0].username,
+                            params[0].password
+                    );
+
+                    //connectable.emit( SIGNAL_LOGIN_OK, params[ 0 ].context );
+                    return true;
+                } catch (UserdataNotCorrectException e) {
+                    //connectable.emit( SIGNAL_LOGIN_FAILED, params[ 0 ].context );
+                    return false;
+                }
+            }
+        }.execute(parameters);
+    }
+
+    //In dieser Funktion sollen alle Sachen, die beim Ersten aufrufen der App ausgeführt werden sollen eingefügt werden
+    public void InitialSetup() {
+        //Stelle Provider zu Verfügung
+        //MainMenu.provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.TEST);
+        CreateTestData();
+
+        //Font Awesomeness kenn nicht in einer static Methode geladen werden.
+    }
+
+    private void CreateTestData() {
+        User newuser = new User();
+        newuser.setEmail("wolfi@joop.com");
+        newuser.setPassword("heidi");
+
+        newuser.setFirstname("Wolfgang");
+        newuser.setLastname("Joop");
+        // TODO: Geburtstag hinzufügen: 18. November 1944
+        newuser.setBirthdate(new Date(12345));
+        newuser.setGender(Gender.MALE);
+
+
+        boolean res = false;
+        try {
+            res = new AddUser().execute(newuser).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (res)
+            Toast.makeText(this, "Wolfi hinzugefügt", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Fehler: Wolfi nicht hinzugefügt", Toast.LENGTH_SHORT).show();
+
+
     }
 }
 

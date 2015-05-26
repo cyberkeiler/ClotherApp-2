@@ -12,11 +12,7 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
-import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
 import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
-import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
-import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAddedException;
-import de.ovgu.cse.se.ClotherAPI.models.Gender;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
@@ -25,34 +21,9 @@ public class MainMenu extends Activity {
     public static Typeface fontawesome;
     public static User user;
 
-    //In dieser Funktion sollen alle Sachen, die beim Ersten aufrufen der App ausgeführt werden sollen eingefügt werden
-    public static void InitialSetup() {
-        //Stelle Provider zu Verfügung
-        MainMenu.provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.MOCKUP);
-        CreateTestData();
-
-        //Font Awesomeness kenn nicht in einer static Methode geladen werden.
-    }
-
-    private static void CreateTestData() {
-        try {
-            User newuser = new User();
-            newuser.setEmail("wolfi@joop.com");
-            newuser.setPassword("heidi");
-
-            newuser.setFirstname("Wolfgang");
-            newuser.setLastname("Joop");
-            // TODO: Geburtstag hinzufügen: 18. November 1944
-            //newuser.setBirthdate();
-            newuser.setGender(Gender.MALE);
 
 
-            MainMenu.provider.addUser(newuser);
-        } catch (UserNotAddedException e) {
-            //User konnte nicht erstellt werden
-            e.printStackTrace();
-        }
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +39,7 @@ public class MainMenu extends Activity {
         user = provider.getUser();
         if (user != null) {
             //textWelcome.setText("Hallo " + user.getFirstname() + "!");
-            textScore.setText(user.getCreditscore());
+            //textScore.setText(user.getCreditscore());
         } else
             textWelcome.setText("Kein User!");
 
@@ -77,6 +48,8 @@ public class MainMenu extends Activity {
         btnStartVoteLoop.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(MainMenu.this, VoteLoop.class);
+                //Animation zum MainMenu
+                overridePendingTransition(R.anim.abc_grow_fade_in_from_bottom, R.anim.abc_shrink_fade_out_from_bottom);
                 startActivity(i);
             }
         });
@@ -130,4 +103,16 @@ public class MainMenu extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /*public class LoadUserData extends AsyncTask<String, String, String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            return null;
+        }
+    }*/
+
+
+
+
 }
