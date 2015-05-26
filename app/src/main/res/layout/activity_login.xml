@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/txtAppLogo"
-        android:layout_width="178dp"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="fontawesome"
@@ -24,7 +24,8 @@
         android:text="@string/icon_heart"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/pink"
-        android:textSize="200dp" />
+        android:textSize="200dp"
+        android:layout_weight="0.46" />
 
     <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
         android:layout_height="180dp"
