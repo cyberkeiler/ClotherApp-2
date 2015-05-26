@@ -9,6 +9,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -28,12 +29,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
-import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
-import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAddedException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
-import de.ovgu.cse.se.ClotherAPI.models.Gender;
-import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
 /**
@@ -64,12 +60,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Stelle Provider zu Verfügung
-        MainMenu.provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.MOCKUP);
+        //Lade Schrift für Icons!
+        MainMenu.fontawesome = Typeface.createFromAsset(getAssets(), "fontawesome.ttf");
 
-        //Hinterlege Testdatensätze (Sichermachen, das diese Funktion nur einmal aufgerufen wird!!)
-        CreateTestData();
-
+        MainMenu.InitialSetup();
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -87,6 +81,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
 
+        TextView txtAppLogo = (TextView) findViewById(R.id.txtAppLogo);
+        txtAppLogo.setTypeface(MainMenu.fontawesome);
+
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -95,7 +92,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
 
                 try {
-                    //TODO: Eingabewerte der Loginmaske
+                    //TODO: dynamische Eingabewerte der Loginmaske übernehmen
                     MainMenu.user = MainMenu.provider.authenticate("wolfi@joop.com", "heidi");
                 } catch (UserdataNotCorrectException e) {
                     //TODO: Fehlerexception
@@ -258,26 +255,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
-    }
-
-    private void CreateTestData() {
-        try {
-            User newuser = new User();
-            newuser.setEmail("wolfi@joop.com");
-            newuser.setPassword("heidi");
-
-            newuser.setFirstname("Wolfgang");
-            newuser.setLastname("Joop");
-            // TODO: Geburtstag hinzufügen: 18. November 1944
-            //newuser.setBirthdate();
-            newuser.setGender(Gender.MALE);
-
-
-            MainMenu.provider.addUser(newuser);
-        } catch (UserNotAddedException e) {
-            //User konnte nicht erstellt werden
-            e.printStackTrace();
-        }
     }
 
     private interface ProfileQuery {

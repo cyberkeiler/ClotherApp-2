@@ -3,7 +3,7 @@
     <string name="title_activity_main_menu">Hauptmenü</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Einstellungen</string>
     <string name="title_activity_vote_loop">VoteLoop</string>
 
     <string name="icon_heart">&#xf004;</string>

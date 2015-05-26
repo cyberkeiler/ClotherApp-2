@@ -12,7 +12,11 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
+import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
 import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
+import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
+import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAddedException;
+import de.ovgu.cse.se.ClotherAPI.models.Gender;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
@@ -20,6 +24,35 @@ public class MainMenu extends Activity {
     public static IObjectProvider provider;
     public static Typeface fontawesome;
     public static User user;
+
+    //In dieser Funktion sollen alle Sachen, die beim Ersten aufrufen der App ausgeführt werden sollen eingefügt werden
+    public static void InitialSetup() {
+        //Stelle Provider zu Verfügung
+        MainMenu.provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.MOCKUP);
+        CreateTestData();
+
+        //Font Awesomeness kenn nicht in einer static Methode geladen werden.
+    }
+
+    private static void CreateTestData() {
+        try {
+            User newuser = new User();
+            newuser.setEmail("wolfi@joop.com");
+            newuser.setPassword("heidi");
+
+            newuser.setFirstname("Wolfgang");
+            newuser.setLastname("Joop");
+            // TODO: Geburtstag hinzufügen: 18. November 1944
+            //newuser.setBirthdate();
+            newuser.setGender(Gender.MALE);
+
+
+            MainMenu.provider.addUser(newuser);
+        } catch (UserNotAddedException e) {
+            //User konnte nicht erstellt werden
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

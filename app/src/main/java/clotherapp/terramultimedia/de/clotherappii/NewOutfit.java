@@ -26,7 +26,7 @@ public class NewOutfit extends Activity {
         setContentView(R.layout.activity_new_outfit);
 
         Occasion occas = new Occasion();
-        occas.setName("Test");
+        occas.setName("Test Occasion");
 
         try {
             MainMenu.provider.addOccasion(occas);
