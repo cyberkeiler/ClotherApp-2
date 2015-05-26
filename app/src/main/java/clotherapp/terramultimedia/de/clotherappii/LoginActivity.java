@@ -6,7 +6,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -368,32 +367,5 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     }
 
-    private void Login(String mail_, String pass_) {
-
-        //Erstelle User mit Logindaten zur Übergabe an TryLogin
-        User login_user = new User();
-        login_user.setEmail(mail_);
-        login_user.setPassword(pass_);
-
-        boolean res = false;
-
-        try {
-            res = new TryLogin().execute(login_user).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        if (res) {
-            Toast.makeText(this, "Login scheint erfolgreich", Toast.LENGTH_SHORT).show();
-            if (MainMenu.provider.getUser() != null) {
-                //Wenn getuser() gesetzt ist, dann war Login spätestens erfolgreich
-                Intent i = new Intent(LoginActivity.this, MainMenu.class);
-                startActivity(i);
-            }
-        } else
-            Toast.makeText(this, "Irgendwas ging beim Login wohl schief", Toast.LENGTH_SHORT).show();
-    }
 }
 
