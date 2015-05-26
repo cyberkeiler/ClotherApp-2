@@ -5,14 +5,12 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.ContentResolver;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -29,6 +27,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
+import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
+import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAddedException;
+import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
+import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
 /**
@@ -59,6 +63,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //Stelle Provider zu verfügung
+        MainMenu.provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.MOCKUP);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -79,8 +86,30 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this, MainMenu.class);
-                startActivity(i);
+                //Einfacher Loginversuch
+                try {
+                    User newuser = new User();
+                    newuser.setEmail("test@testtempel.com");
+                    newuser.setPassword("test");
+                    MainMenu.provider.addUser(new User());
+                } catch (UserNotAddedException e) {
+                    System.out.println("User konnte nicht erstellt werden");
+                    e.printStackTrace();
+                }
+
+                try {
+                    MainMenu.user = MainMenu.provider.authenticate("test@testtempel.com", "test");
+                } catch (UserdataNotCorrectException e) {
+                    System.out.println(e);
+                }
+
+                if (MainMenu.user != null) {
+                    Intent i = new Intent(LoginActivity.this, MainMenu.class);
+                    startActivity(i);
+                } else {
+                    System.out.println("user Empty!");
+                }
+
                 //attemptLogin();
             }
         });
@@ -226,6 +255,16 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     }
 
+    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
+        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(LoginActivity.this,
+                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
+
+        mEmailView.setAdapter(adapter);
+    }
+
+
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -234,16 +273,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
-    }
-
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(LoginActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
     }
 
     /**

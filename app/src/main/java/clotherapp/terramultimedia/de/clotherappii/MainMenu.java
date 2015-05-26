@@ -3,7 +3,6 @@ package clotherapp.terramultimedia.de.clotherappii;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,15 +12,14 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
-import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
 import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
-import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
 public class MainMenu extends Activity {
-    public IObjectProvider provider;
+    public static IObjectProvider provider;
     public static Typeface fontawesome;
+    public static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +29,14 @@ public class MainMenu extends Activity {
         //Lade Schrift für Icons!
         fontawesome = Typeface.createFromAsset( getAssets(), "fontawesome.ttf" );
 
-        provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.MOCKUP);
-        User user = provider.getUser();
-
         TextView textWelcome = (TextView) findViewById(R.id.textWelcome);
         TextView textScore = (TextView) findViewById(R.id.textscore);
+        if (user != null) {
+            textWelcome.setText("Hallo " + user.getEmail() + "!");
+            //textScore.setText(user.getCreditscore());
+        } else
+            textWelcome.setText("Kein User!");
 
-        textWelcome.setText("Hallo Noob!");//"+user.getFirstname()+"!");
-        //textScore.setText(user.getCreditscore());
 
         Button btnStartVoteLoop = (Button) findViewById(R.id.btnStart);
         btnStartVoteLoop.setOnClickListener(new View.OnClickListener() {
