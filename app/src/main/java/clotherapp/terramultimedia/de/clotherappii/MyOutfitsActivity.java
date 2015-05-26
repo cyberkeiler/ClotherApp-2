@@ -11,30 +11,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import de.ovgu.cse.se.ClotherAPI.exceptions.OccasionNotAddedException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.OccasionNotFoundException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAuthenticatedException;
 import de.ovgu.cse.se.ClotherAPI.models.Occasion;
 
 
-public class NewOutfit extends Activity {
+public class MyOutfitsActivity extends Activity {
     private String[] TestItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_outfit);
-
-        Occasion occas = new Occasion();
-        occas.setName("Test Occasion");
-
-        try {
-            MainMenu.provider.addOccasion(occas);
-        } catch (OccasionNotAddedException e) {
-            e.printStackTrace();
-        } catch (UserNotAuthenticatedException e) {
-            e.printStackTrace();
-        }
 
 
         ListView occ_list = (ListView) findViewById(R.id.OccListView);

@@ -35,7 +35,7 @@
             android:label="@string/title_activity_vote_loop" >
         </activity>
         <activity
-            android:name=".NewOutfit"
+            android:name=".MyOutfitsActivity"
             android:label="@string/title_activity_new_outfit"></activity>
     </application>
 

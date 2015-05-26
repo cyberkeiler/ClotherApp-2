@@ -49,11 +49,11 @@ public class MainMenu extends Activity {
             }
         });
 
-        FloatingActionButton btnNewOutfit = (FloatingActionButton) findViewById(R.id.btnNewOutfit);
-        btnNewOutfit.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton btnMyOutfits = (FloatingActionButton) findViewById(R.id.btnOutfits);
+        btnMyOutfits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainMenu.this, NewOutfit.class);
+                Intent i = new Intent(MainMenu.this, MyOutfitsActivity.class);
                 startActivity(i);
             }
         });

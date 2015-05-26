@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -59,16 +58,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/btnprofile"
         android:text="logout" />
-
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnNewOutfit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnOutfits"
-        android:layout_centerHorizontal="true"
-        android:text="@string/icon_hot"
-        fab:fab_colorNormal="@color/pink"
-        fab:fab_colorPressed="@color/pink_pressed" />
 
     <TextView
         android:id="@+id/appIcon"
