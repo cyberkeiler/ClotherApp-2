@@ -39,18 +39,6 @@ public class MainMenu extends Activity {
         textWelcome = (TextView) findViewById(R.id.textWelcome);
         textScore = (TextView) findViewById(R.id.textscore);
 
-        /*
-        if (user != null) {
-            textWelcome.setText("Hallo " + user.getFirstname() + "!");
-            textScore.setText(user.getCreditscore());
-        } else {
-            Intent i = new Intent(MainMenu.this, LoginActivity.class);
-            //Animation zum MainMenu
-            overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
-            startActivity(i);
-        }*/
-
-
         Button btnStartVoteLoop = (Button) findViewById(R.id.btnStart);
         btnStartVoteLoop.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -80,9 +68,7 @@ public class MainMenu extends Activity {
                 provider.closeConnection();
                 user = null;
 
-                //Starte Login
-                Intent i = new Intent(MainMenu.this, LoginActivity.class);
-                startActivity(i);
+                onResume();
             }
         });
 
