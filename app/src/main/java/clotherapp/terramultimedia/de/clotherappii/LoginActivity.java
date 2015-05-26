@@ -5,8 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -32,7 +32,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
 import de.ovgu.cse.se.ClotherAPI.models.Gender;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
@@ -68,18 +67,19 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         //Lade Schrift für Icons!
         MainMenu.fontawesome = Typeface.createFromAsset(getAssets(), "fontawesome.ttf");
 
-        InitialSetup();
+        //InitialSetup();
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
+        //populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
+                    //attemptLogin();
                     return true;
                 }
                 return false;
@@ -95,20 +95,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             public void onClick(View view) {
                 //Einfacher Loginversuch
 
-
-
-                    //TODO: dynamische Eingabewerte der Loginmaske übernehmen
-                tryLogin("wolfi@joop.com", "heidi", null);
-                    /*
-                    MainMenu.user = MainMenu.provider.authenticate("wolfi@joop.com", "heidi");
-
-                    if (MainMenu.provider.getUser() != null) {
-                        //Wenn getuser() gesetzt ist, dann war Login spätestens erfolgreich
-                        Intent i = new Intent(LoginActivity.this, MainMenu.class);
-                        startActivity(i);
-                    }*/
-
-
+                //TODO: dynamische Eingabewerte der Loginmaske übernehmen
+                Login("wolfi@joop.com", "heidi");
 
                 //attemptLogin();
             }
@@ -119,7 +107,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private void populateAutoComplete() {
-        getLoaderManager().initLoader(0, null, this);
+        //getLoaderManager().initLoader(0, null, this);
     }
 
 
@@ -128,6 +116,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
+
     public void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -188,6 +177,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     /**
      * Shows the progress UI and hides the login form.
      */
+
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
@@ -278,6 +268,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+
+
+    //TODO: Aufgabe für Christian: UserLoginTask sieht gut aus (inkl. Progressbar!) anpassen!
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
@@ -331,37 +324,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
-    private class LoginParameters {
-        String username;
-        String password;
-        Context context;
-    }
-
-    public void tryLogin(String username, String password, Context context) {
-
-        LoginParameters parameters = new LoginParameters();
-        parameters.username = username;
-        parameters.password = password;
-        parameters.context = context;
-
-        new AsyncTask<LoginParameters, Void, Boolean>() {
-            @Override
-            protected Boolean doInBackground(LoginParameters... params) {
-                try {
-                    MainMenu.provider.authenticate(
-                            params[0].username,
-                            params[0].password
-                    );
-
-                    //connectable.emit( SIGNAL_LOGIN_OK, params[ 0 ].context );
-                    return true;
-                } catch (UserdataNotCorrectException e) {
-                    //connectable.emit( SIGNAL_LOGIN_FAILED, params[ 0 ].context );
-                    return false;
-                }
-            }
-        }.execute(parameters);
-    }
 
     //In dieser Funktion sollen alle Sachen, die beim Ersten aufrufen der App ausgeführt werden sollen eingefügt werden
     public void InitialSetup() {
@@ -396,9 +358,37 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         if (res)
             Toast.makeText(this, "Wolfi hinzugefügt", Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this, "Fehler: Wolfi nicht hinzugefügt", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fehler: Wolfi nicht hinzugefügt - Existiert evtl schon?", Toast.LENGTH_SHORT).show();
 
 
+    }
+
+    private void Login(String mail_, String pass_) {
+
+        //Erstelle User mit Logindaten zur Übergabe an TryLogin
+        User login_user = new User();
+        login_user.setEmail(mail_);
+        login_user.setPassword(pass_);
+
+        boolean res = false;
+
+        try {
+            res = new TryLogin().execute(login_user).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (res) {
+            Toast.makeText(this, "Login scheint erfolgreich", Toast.LENGTH_SHORT).show();
+            if (MainMenu.provider.getUser() != null) {
+                //Wenn getuser() gesetzt ist, dann war Login spätestens erfolgreich
+                Intent i = new Intent(LoginActivity.this, MainMenu.class);
+                startActivity(i);
+            }
+        } else
+            Toast.makeText(this, "Irgendwas ging beim Login wohl schief", Toast.LENGTH_SHORT).show();
     }
 }
 
