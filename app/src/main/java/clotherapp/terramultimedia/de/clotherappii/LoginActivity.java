@@ -64,8 +64,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Stelle Provider zu verfügung
+        //Stelle Provider zu Verfügung
         MainMenu.provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.MOCKUP);
+
+        //Hinterlege Testdatensätze (Sichermachen, das diese Funktion nur einmal aufgerufen wird!!)
+        CreateTestData();
+
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -97,7 +101,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     //TODO: Fehlerexception
                 }
 
-                if (MainMenu.provider.getUser() <>null){
+                if (MainMenu.provider.getUser() != null) {
                     //Wenn getuser() gesetzt ist, dann war Login spätestens erfolgreich
                     Intent i = new Intent(LoginActivity.this, MainMenu.class);
                     startActivity(i);
@@ -256,7 +260,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailView.setAdapter(adapter);
     }
 
-    private void CreateTestUser() {
+    private void CreateTestData() {
         try {
             User newuser = new User();
             newuser.setEmail("wolfi@joop.com");
