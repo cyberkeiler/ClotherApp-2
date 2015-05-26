@@ -13,5 +13,6 @@
 
     <string name="icon_cam">&#xf030;</string>
     <string name="title_activity_new_outfit">Neues Outfitt</string>
+    <string name="title_activity_profile">Dein Profil</string>
 
 </resources>

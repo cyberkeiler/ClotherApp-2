@@ -47,6 +47,15 @@ public class MainMenu extends Activity {
             }
         });
 
+        Button btnProfile = (Button) findViewById(R.id.btnprofile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenu.this, ProfileActivity.class);
+                startActivity(i);
+            }
+        });
+
         Button btnMyOutfits = (Button) findViewById(R.id.btnOutfits);
         btnMyOutfits.setOnClickListener(new View.OnClickListener() {
             @Override

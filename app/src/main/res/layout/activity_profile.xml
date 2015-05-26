@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="clotherapp.terramultimedia.de.clotherappii.ProfileActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/icon_user"
+            android:id="@+id/txtIcon"
+            android:layout_gravity="center_horizontal"
+            android:textSize="80dp"
+            android:textAlignment="center"
+            android:textColor="@color/pink"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Vorname Name"
+            android:id="@+id/txtname"
+            android:layout_gravity="center_horizontal"
+            android:width="180dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Mailadresse"
+            android:id="@+id/textView5" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="test@mail.com"
+            android:id="@+id/txtMail"
+            android:layout_gravity="center_horizontal|right"
+            android:width="180dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Geburtstag"
+            android:id="@+id/textView4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="01.01.1930"
+            android:id="@+id/txtGeburtstag"
+            android:layout_gravity="center_horizontal"
+            android:width="180dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Registrierung"
+            android:id="@+id/textView" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="24.12.2014"
+            android:id="@+id/txtReg"
+            android:width="180dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Creditpoints"
+            android:id="@+id/textView6"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="0000"
+            android:id="@+id/textscore"
+            android:textSize="@dimen/fonsize_big"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zurück"
+        android:id="@+id/button"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/linearLayout" />
+
+</RelativeLayout>
