@@ -32,6 +32,7 @@ import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
 import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAddedException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
+import de.ovgu.cse.se.ClotherAPI.models.Gender;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
@@ -87,29 +88,20 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             @Override
             public void onClick(View view) {
                 //Einfacher Loginversuch
-                try {
-                    User newuser = new User();
-                    newuser.setEmail("test@testtempel.com");
-                    newuser.setPassword("test");
-                    MainMenu.provider.addUser(new User());
-                } catch (UserNotAddedException e) {
-                    System.out.println("User konnte nicht erstellt werden");
-                    e.printStackTrace();
-                }
+
 
                 try {
-                    MainMenu.user = MainMenu.provider.authenticate("test@testtempel.com", "test");
+                    //TODO: Eingabewerte der Loginmaske
+                    MainMenu.user = MainMenu.provider.authenticate("wolfi@joop.com", "heidi");
                 } catch (UserdataNotCorrectException e) {
-                    System.out.println(e);
+                    //TODO: Fehlerexception
                 }
 
-                if (MainMenu.user != null) {
+                if (MainMenu.provider.getUser() <>null){
+                    //Wenn getuser() gesetzt ist, dann war Login spätestens erfolgreich
                     Intent i = new Intent(LoginActivity.this, MainMenu.class);
                     startActivity(i);
-                } else {
-                    System.out.println("user Empty!");
                 }
-
                 //attemptLogin();
             }
         });
@@ -264,6 +256,25 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailView.setAdapter(adapter);
     }
 
+    private void CreateTestUser() {
+        try {
+            User newuser = new User();
+            newuser.setEmail("wolfi@joop.com");
+            newuser.setPassword("heidi");
+
+            newuser.setFirstname("Wolfgang");
+            newuser.setLastname("Joop");
+            // TODO: Geburtstag hinzufügen: 18. November 1944
+            //newuser.setBirthdate();
+            newuser.setGender(Gender.MALE);
+
+
+            MainMenu.provider.addUser(newuser);
+        } catch (UserNotAddedException e) {
+            //User konnte nicht erstellt werden
+            e.printStackTrace();
+        }
+    }
 
     private interface ProfileQuery {
         String[] PROJECTION = {
