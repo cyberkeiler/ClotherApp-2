@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-
 import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
@@ -49,7 +47,7 @@ public class MainMenu extends Activity {
             }
         });
 
-        FloatingActionButton btnMyOutfits = (FloatingActionButton) findViewById(R.id.btnOutfits);
+        Button btnMyOutfits = (Button) findViewById(R.id.btnOutfits);
         btnMyOutfits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
