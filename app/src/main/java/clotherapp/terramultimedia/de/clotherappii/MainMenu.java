@@ -20,7 +20,7 @@ import de.ovgu.cse.se.ClotherAPI.models.User;
 public class MainMenu extends Activity {
     public static IObjectProvider provider;
     public static Typeface fontawesome;
-    public static User user;
+    public static User user = null;
 
     private TextView textWelcome;
     private TextView textScore;
@@ -68,6 +68,7 @@ public class MainMenu extends Activity {
                 provider.closeConnection();
                 user = null;
 
+                //Rufe onResume() auf -> springt in LoginACtivity (user = null!)
                 onResume();
             }
         });
@@ -80,8 +81,10 @@ public class MainMenu extends Activity {
     protected void onResume() {
         super.onResume();
         if (user != null) {
-            //textWelcome.setText("Hallo " + user.getFirstname() + "!");
-            //textScore.setText(user.getCreditscore());
+            if (user.getFirstname() != null)
+                textWelcome.setText("Hallo " + user.getFirstname() + "!");
+            if (user.getCreditscore() > 0)
+                textScore.setText(user.getCreditscore());
         } else {
             Toast.makeText(this, "Bitte einloggen!", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainMenu.this, LoginActivity.class);
