@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
@@ -34,10 +35,11 @@ public class MainMenu extends Activity {
         //Lade Schrift für Icons!
         fontawesome = Typeface.createFromAsset( getAssets(), "fontawesome.ttf" );
 
-
         // Begrüßungstext und Creditscore
         textWelcome = (TextView) findViewById(R.id.textWelcome);
         textScore = (TextView) findViewById(R.id.textscore);
+
+        /*
         if (user != null) {
             textWelcome.setText("Hallo " + user.getFirstname() + "!");
             textScore.setText(user.getCreditscore());
@@ -46,7 +48,7 @@ public class MainMenu extends Activity {
             //Animation zum MainMenu
             overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
             startActivity(i);
-        }
+        }*/
 
 
         Button btnStartVoteLoop = (Button) findViewById(R.id.btnStart);
@@ -76,22 +78,26 @@ public class MainMenu extends Activity {
             public void onClick(View view) {
                 //Beende Verbindung zu API
                 provider.closeConnection();
-                //Beende MainMenu Activity -> Zurück zum Login
-                finish();
+                user = null;
+
+                //Starte Login
+                Intent i = new Intent(MainMenu.this, LoginActivity.class);
+                startActivity(i);
             }
         });
 
-        //FloatingActionButton btnLogout = (FloatingActionButton) findViewById(R.id.pink_icon);
 
         appIcon.setTypeface(fontawesome);
-
     }
 
+    @Override
     protected void onResume() {
+        super.onResume();
         if (user != null) {
-            textWelcome.setText("Hallo " + user.getFirstname() + "!");
-            textScore.setText(user.getCreditscore());
+            //textWelcome.setText("Hallo " + user.getFirstname() + "!");
+            //textScore.setText(user.getCreditscore());
         } else {
+            Toast.makeText(this, "Bitte einloggen!", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainMenu.this, LoginActivity.class);
             //Animation zum MainMenu
             overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
@@ -120,19 +126,5 @@ public class MainMenu extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-    /*public class LoadUserData extends AsyncTask<String, String, String>{
-
-        @Override
-        protected String doInBackground(String... params) {
-            return null;
-        }
-    }*/
-
-
-
 
 }
