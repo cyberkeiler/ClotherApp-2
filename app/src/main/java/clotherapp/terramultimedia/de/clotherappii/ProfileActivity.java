@@ -38,10 +38,11 @@ public class ProfileActivity extends Activity {
         TextView txtReg = (TextView) findViewById(R.id.txtReg);
         txtReg.setText(MainMenu.user.getCreationTime().toString());
 
+        //TODO: Fange fehler vom Creditscore ab
         //TextView txtScore = (TextView) findViewById(R.id.textscore);
         //txtScore.setText(MainMenu.user.getCreditscore());
 
-        //TODO: Add rest des Profils und Button um zurück ins Hauptmenü zu kommen
+        //TODO: Button um zurück ins Hauptmenü zu kommen
     }
 
     @Override
