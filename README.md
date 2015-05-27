@@ -9,6 +9,7 @@ Passwort: heidi<br/>
 <br/>
 TEST-betrieb momentan nicht möglich, Troubleshooting?<br/>
 Vermutung: Asynchrone Threads (Hinweis im API-Wiki) wurde nicht erstellt, da k.A.!<br/>
+Update: TEST Betrieb erfolgreich!! Wolfi als Testuser erstellt. <br/>
 <br/>
 Wiki der API: https://bitbucket.org/cse_admin/se_clother_api/wiki/Home<br/>
 Floating Action Buttons: https://github.com/makovkastar/FloatingActionButton<br/>
