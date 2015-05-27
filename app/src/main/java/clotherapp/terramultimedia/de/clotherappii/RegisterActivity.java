@@ -16,7 +16,7 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
 
         //TODO: Erstelle Textfeldabfrage usw. plausibilitätsprüfung und erstelle angand dieser einen User
-        User newuser;
+        User newuser = new User();
         //email
         EditText Email = (EditText) findViewById(R.id.EmailAdress);
         String EmailString = Email.getText().toString();
