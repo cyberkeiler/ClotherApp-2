@@ -317,7 +317,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         newuser.setFirstname("Wolfgang");
         newuser.setLastname("Joop");
         // TODO: Geburtstag hinzufügen: 18. November 1944
-        newuser.setBirthdate(new Date(12345));
+        newuser.setBirthdate(new Date(44,11,18));//Jahr, Monat, Tag constructor with integer
         newuser.setGender(Gender.MALE);
 
 

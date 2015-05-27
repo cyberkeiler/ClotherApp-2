@@ -4,7 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import de.ovgu.cse.se.ClotherAPI.models.Gender;
 
@@ -22,7 +30,7 @@ public class ProfileActivity extends Activity {
 
         if (MainMenu.user.getGender() == Gender.MALE) {
             //TODO: Setze Profil Icon bei männlichen Usern auf blau!
-            //txticon.setTextColor();
+            txticon.setTextColor(getResources().getColor(R.color.blue_semi_transparent));
         }
 
         TextView txtName = (TextView) findViewById(R.id.txtname);
@@ -34,15 +42,40 @@ public class ProfileActivity extends Activity {
         //TODO: Datum richtig formatieren
         TextView txtGB = (TextView) findViewById(R.id.txtGeburtstag);
         txtGB.setText(MainMenu.user.getBirthdate().toString());
+        //hoffentlich funktioniert es so...
+        String Bdaystring = (String) txtGB.getText();
+        SimpleDateFormat Bday = new SimpleDateFormat("dd-mm-yyyy", Locale.GERMANY);
+        Date Birthday = new Date(0,1,1);
+        try {
+             Birthday = Bday.parse(Bdaystring);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        MainMenu.user.setBirthdate(Birthday);
+
 
         TextView txtReg = (TextView) findViewById(R.id.txtReg);
         txtReg.setText(MainMenu.user.getCreationTime().toString());
 
         //TODO: Fange fehler vom Creditscore ab
-        //TextView txtScore = (TextView) findViewById(R.id.textscore);
-        //txtScore.setText(MainMenu.user.getCreditscore());
+        TextView txtScore = (TextView) findViewById(R.id.textscore);
+        if (MainMenu.user.getCreditscore() >= 0){
+            txtScore.setText(MainMenu.user.getCreditscore());
+        }
+        else {
+            Toast.makeText(this, "Fatal Error", Toast.LENGTH_SHORT);
+        }
+
 
         //TODO: Button um zurück ins Hauptmenü zu kommen
+
+        Button backToMainMenu = (Button) findViewById(R.id.backtoMain);
+        backToMainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // back to main menu?
+            }
+        });
     }
 
     @Override

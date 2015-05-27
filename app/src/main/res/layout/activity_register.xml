@@ -51,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:id="@+id/editText" />
+                android:id="@+id/EmailAdress"
+                android:hint="Max@Mustermann.de" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,15 +66,17 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:ems="10"
-                android:id="@+id/editText3" />
+                android:id="@+id/password"
+                android:hint="password" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:ems="10"
-                android:id="@+id/editText4"
-                android:layout_gravity="center_horizontal" />
+                android:id="@+id/confirmpassword"
+                android:layout_gravity="center_horizontal"
+                android:hint="confirmpassowrd" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -87,7 +90,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="date"
                 android:ems="10"
-                android:id="@+id/editText2" />
+                android:id="@+id/Birthday"
+                android:hint="30/01/1966" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -96,20 +100,24 @@
                 android:text="Vorname"
                 android:id="@+id/textView11" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="24.12.2014"
-                android:id="@+id/textView12"
-                android:width="180dp" />
+                android:id="@+id/FirstName"
+                android:hint="Max" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Nachname"
-                android:id="@+id/textView13" />
+                android:id="@+id/TextView12" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LastName"
+                android:hint="Mustermann" />
 
         </LinearLayout>
 
@@ -122,4 +130,12 @@
             android:layout_centerHorizontal="true"
             android:layout_alignBottom="@+id/linearLayout2" />
     </RelativeLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="63dp" />
 </RelativeLayout>
