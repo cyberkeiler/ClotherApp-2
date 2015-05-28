@@ -19,8 +19,8 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
 
         //Setzt die Icon Schrift für das Symbol
-        TextView ProfileIcon = (TextView) findViewById(R.id.textView2);
-        ProfileIcon .setTypeface(MainMenu.fontawesome);
+        TextView RegisterIcon = (TextView) findViewById(R.id.textView2);
+        RegisterIcon .setTypeface(MainMenu.fontawesome);
 
         //TODO: Erstelle Textfeldabfrage usw. plausibilitätsprüfung und erstelle angand dieser einen User
 
