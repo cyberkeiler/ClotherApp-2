@@ -101,15 +101,34 @@
             android:textAlignment="center"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal" />
-    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zurück"
-        android:id="@+id/button"
-        android:gravity="center_horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@+id/linearLayout" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daten ändern"
+                android:id="@+id/button4"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/btnDeleteProfile" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profil löschen"
+                android:id="@+id/btnDeleteProfile"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/white"
+                android:background="@color/color_red" />
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
