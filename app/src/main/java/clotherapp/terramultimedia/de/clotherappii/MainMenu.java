@@ -101,7 +101,7 @@ public class MainMenu extends Activity {
             Toast.makeText(this, "Bitte einloggen!", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainMenu.this, LoginActivity.class);
             //Animation zum MainMenu
-            // TODO: Check ob wirksam, ansonsten können wir diese Zeile wieder entfernen
+            // TODO: Check ob wirksam, ansonsten können wir diese Zeile wieder entfernen not DONE
             overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
             startActivity(i);
         }

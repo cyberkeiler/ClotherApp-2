@@ -104,8 +104,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal">
+            android:layout_height="match_parent">
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -127,6 +126,15 @@
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/white"
                 android:background="@color/color_red" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zurück"
+                android:id="@+id/backtoMain"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/btnDeleteProfile" />
         </RelativeLayout>
 
     </LinearLayout>
