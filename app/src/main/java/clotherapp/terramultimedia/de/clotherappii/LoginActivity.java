@@ -100,6 +100,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         btnRegister.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                showProgress(true);
                 //TODO: Register Button verlinken wenn RegisterActivity funktioniert
                 CreateTestData();
             }
@@ -331,6 +332,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         newuser.setBirthdate(new Date(12345));
         newuser.setGender(Gender.MALE);
 
+        showProgress(false);
 
         boolean res = false;
         try {
@@ -346,6 +348,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         else
             Toast.makeText(this, "Fehler: Wolfi nicht hinzugefügt - Existiert evtl schon?", Toast.LENGTH_SHORT).show();
+        showProgress(false);
     }
 
 }
