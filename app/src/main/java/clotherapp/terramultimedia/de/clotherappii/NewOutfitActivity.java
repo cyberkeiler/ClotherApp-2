@@ -85,11 +85,11 @@ public class NewOutfitActivity extends Activity {
     }
 
     private void NextStep(){
-        SetStep(++lay_step_act);
+        SetStep(lay_step_act+1);
     }
 
     private void PrevStep(){
-        SetStep(--lay_step_act);
+        SetStep(lay_step_act-1);
     }
 
     private void populateListView(List<Occasion> liste) {
