@@ -13,12 +13,75 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Occasion hinzufügen"
+            android:id="@+id/textView10" />
 
         <ListView
             android:id="@+id/OccListView"
             android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:choiceMode="multipleChoice"
+            android:layout_weight="0.97" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:choiceMode="multipleChoice" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Eigene Occasion erstellen"
+            android:id="@+id/textView8" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="193dp"
+                android:layout_height="83dp"
+                android:id="@+id/textOccasionName"
+                android:layout_weight="0.50"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/btnAddOccasion"
+                android:hint="Neue Occasion" />
+
+            <Button
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/btnAddOccasion"
+                android:layout_weight="0.05"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@+id/textOccasionName"
+                android:textSize="@dimen/fonsize_big" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&lt;Zurück"
+                android:id="@+id/btnBack" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weiter >"
+                android:id="@+id/btnContinue" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </RelativeLayout>
