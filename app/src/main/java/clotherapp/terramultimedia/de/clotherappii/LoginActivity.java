@@ -102,7 +102,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             @Override
             public void onClick(View v) {
                 showProgress(true);
-                //TODO: Register Button verlinken wenn RegisterActivity funktioniert
+                // Register Button verlinken wenn RegisterActivity funktioniert
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class ));
                 //CreateTestData();
             }
@@ -330,7 +330,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         newuser.setFirstname("Wolfgang");
         newuser.setLastname("Joop");
-        // TODO: Geburtstag hinzufügen: 18. November 1944
+        //  Geburtstag hinzugefügt
         newuser.setBirthdate(new Date(44,11,18));//Jahr, Monat, Tag constructor with integer
         newuser.setGender(Gender.MALE);
 
