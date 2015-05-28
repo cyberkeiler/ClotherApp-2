@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import de.ovgu.cse.se.ClotherAPI.models.User;
@@ -16,6 +17,10 @@ public class RegisterActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        //Setzt die Icon Schrift für das Symbol
+        TextView ProfileIcon = (TextView) findViewById(R.id.textView2);
+        ProfileIcon .setTypeface(MainMenu.fontawesome);
 
         //TODO: Erstelle Textfeldabfrage usw. plausibilitätsprüfung und erstelle angand dieser einen User
 
