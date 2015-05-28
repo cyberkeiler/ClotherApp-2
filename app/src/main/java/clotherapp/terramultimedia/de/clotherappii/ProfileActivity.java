@@ -3,6 +3,7 @@ package clotherapp.terramultimedia.de.clotherappii;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,7 +29,7 @@ public class ProfileActivity extends Activity {
         txticon.setTypeface(MainMenu.fontawesome);
 
         if (MainMenu.user.getGender() == Gender.MALE) {
-            //TODO: Setze Profil Icon bei männlichen Usern auf blau!
+            //Setze Profil Icon bei männlichen Usern auf blau!
             txticon.setTextColor(getResources().getColor(R.color.blue_semi_transparent));
         }
 
@@ -48,6 +49,15 @@ public class ProfileActivity extends Activity {
         //TODO: Fange fehler vom Creditscore ab // Was fürn fehler?
         TextView txtScore = (TextView) findViewById(R.id.textscore);
         if(MainMenu.user.getCreditscore()>0) txtScore.setText(MainMenu.user.getCreditscore());
+
+        //TODO: Profil editieren - right now create new user ....unschön!
+        Button btnChangeProfile = (Button) findViewById(R.id.ChangeData);
+        btnChangeProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+            }
+        });
 
         Button btnDeleteProfile = (Button) findViewById(R.id.btnDeleteProfile);
         btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +85,7 @@ public class ProfileActivity extends Activity {
             }
         });
 
-        //TODO: Button um zurück ins Hauptmenü zu kommen
+        // Button um zurück ins Hauptmenü zu kommen
 
         Button backToMain = (Button) findViewById(R.id.backtoMain);
         backToMain.setOnClickListener(new View.OnClickListener() {

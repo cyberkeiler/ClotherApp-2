@@ -65,8 +65,7 @@ public class RegisterActivity extends Activity {
             EditText lastName = (EditText) findViewById(R.id.LastName);
             newuser.setFirstname(firstName.getText().toString());
             newuser.setLastname(lastName.getText().toString());
-
-            }
+                        }
         });
         //TODO: AUSKOMMENTIEREN. Netzwerkanbindung habe ich für dich Vorbereitet:
 
@@ -84,6 +83,8 @@ public class RegisterActivity extends Activity {
             Toast.makeText(this, "Profil erfolgreich erstellt", Toast.LENGTH_SHORT).show();
             //TODO: Bei erfolgreicher Registrierung soll der User automatische eingeloggt sein
             //dazu: MainMenu.Resume() und MainMenu.user = getUser setzen!
+            //MainMenu.Resume();
+            // MainMenu.user = MainMenu.provider.getUser();
         else
             Toast.makeText(this, "Fehler bei Registrierung!", Toast.LENGTH_SHORT).show();
 
