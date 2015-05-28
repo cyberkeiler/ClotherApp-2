@@ -47,15 +47,15 @@ public class ProfileActivity extends Activity {
         txtReg.setText(MainMenu.user.getCreationTime().toString());
 
         //TODO: Fange fehler vom Creditscore ab
-        //TextView txtScore = (TextView) findViewById(R.id.textscore);
-        //txtScore.setText(MainMenu.user.getCreditscore());
+        TextView txtScore = (TextView) findViewById(R.id.textscore);
+        if(MainMenu.user.getCreditscore()>0) txtScore.setText(MainMenu.user.getCreditscore());
 
         Button btnDeleteProfile = (Button) findViewById(R.id.btnDeleteProfile);
         btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                //Dialogabfrage: Profil löschen bestätigen
                 new AlertDialog.Builder(ActivityContext)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("Profil löschen?")
