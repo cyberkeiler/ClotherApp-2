@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Registrieren"
-                android:id="@+id/button3"
+                android:id="@+id/btnRegister"
                 android:layout_gravity="center_horizontal" />
 
         </LinearLayout>

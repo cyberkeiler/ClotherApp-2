@@ -95,7 +95,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
 
-        //TODO: Register Button verlinken
+
+        Button btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: Register Button verlinken wenn RegisterActivity funktioniert
+                CreateTestData();
+            }
+        });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -286,7 +294,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
             MainMenu.user = MainMenu.provider.getUser();
 
-            // TODO: register the new account here.
             return true;
         }
 
@@ -299,6 +306,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             if (success) {
                 finish();
             } else {
+                //TODO: Unterscheidet noch nicht ob Passwort falsch oder User nicht existiert!
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }
