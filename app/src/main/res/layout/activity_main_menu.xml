@@ -9,42 +9,6 @@
     tools:context="clotherapp.terramultimedia.de.clotherappii.MainMenu">
 
     <Button
-        android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="JETZT VOTEN"
-        android:textSize="24dp"
-        android:layout_above="@+id/btnOutfits"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/textWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="Hallo"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textscore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="0000"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/btnOutfits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Neue Outfit"
-        android:layout_above="@+id/btnprofile"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="78dp" />
-
-    <Button
         android:id="@+id/btnprofile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,41 +24,102 @@
         android:layout_alignTop="@+id/btnprofile"
         android:text="logout" />
 
-    <TextView
-        android:id="@+id/appIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnStart"
-        android:layout_centerHorizontal="true"
-        android:text="@string/icon_hot"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@dimen/fonsize_big" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/icon_heart"
-        android:id="@+id/hot2"
-        android:textSize="@dimen/fonsize_big"
-        android:textColor="@color/white"
-        android:background="@color/pink"
-        android:layout_alignTop="@+id/not2"
-        android:layout_alignBottom="@+id/not2"
-        android:layout_toEndOf="@+id/btnStart"
-        android:width="30dp" />
-
-    <Button
-        android:text="@string/icon_not"
-        android:id="@+id/not2"
-        android:textSize="@dimen/fonsize_big"
-        android:textColor="@color/color_white"
-        android:background="@color/color_black"
-        android:layout_below="@+id/appIcon"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/btnStart"
-        android:layout_alignEnd="@+id/textWelcome"
-        android:width="30dp"
+        android:id="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout4">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/btnprofile"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/appIcon">
+
+            <Button
+                android:text="@string/icon_not"
+                android:id="@+id/not2"
+                android:textSize="@dimen/fonsize_big"
+                android:textColor="@color/color_white"
+                android:background="@color/color_black"
+                android:layout_below="@+id/appIcon"
+                android:layout_alignParentStart="true"
+                android:layout_alignBottom="@+id/btnStart"
+                android:layout_alignEnd="@+id/textWelcome"
+                android:width="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JETZT VOTEN"
+                android:textSize="24dp"
+                android:layout_above="@+id/btnOutfits"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_heart"
+                android:id="@+id/hot2"
+                android:textSize="@dimen/fonsize_big"
+                android:textColor="@color/white"
+                android:background="@color/pink"
+                android:layout_alignTop="@+id/not2"
+                android:layout_alignBottom="@+id/not2"
+                android:layout_toEndOf="@+id/btnStart"
+                android:width="30dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnOutfits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Neues Outfit"
+            android:layout_above="@+id/btnprofile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="78dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/linearLayout3"
+        android:layout_marginEnd="30dp"
+        android:id="@+id/linearLayout4"
+        android:weightSum="1">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textscore"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="0000"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignTop="@+id/linearLayout4"
+        android:layout_alignEnd="@+id/linearLayout3" />
+
+    <TextView
+        android:id="@+id/textWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Hallo"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_weight="0.77"
+        android:layout_toStartOf="@+id/btnlogout" />
 
 </RelativeLayout>
