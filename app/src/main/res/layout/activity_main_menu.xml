@@ -39,9 +39,10 @@
         android:id="@+id/btnOutfits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Neue Outfit"
+        android:layout_above="@+id/btnprofile"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Deine Outfits" />
+        android:layout_marginBottom="78dp" />
 
     <Button
         android:id="@+id/btnprofile"
