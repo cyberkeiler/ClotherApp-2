@@ -12,8 +12,8 @@ public class VoteLoop extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote_loop);
 
-        Button btnhot2 = (Button) findViewById(R.id.hot2);
-        Button btnnot2 = (Button) findViewById(R.id.not2);
+        Button btnhot2 = (Button) findViewById(R.id.btnhot2);
+        Button btnnot2 = (Button) findViewById(R.id.btnnot2);
         btnhot2.setTypeface(MainMenu.fontawesome);
         btnnot2.setTypeface(MainMenu.fontawesome);
 

@@ -95,6 +95,17 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
 
+
+        Button btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showProgress(true);
+                //TODO: Register Button verlinken wenn RegisterActivity funktioniert
+                CreateTestData();
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -284,7 +295,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
             MainMenu.user = MainMenu.provider.getUser();
 
-            // TODO: register the new account here.
             return true;
         }
 
@@ -297,7 +307,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             if (success) {
                 finish();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                //TODO: Unterscheidet noch nicht ob Passwort falsch oder User nicht existiert! -> NICHT MÖGLICH (fehlt in API)
+                mPasswordView.setError(getString(R.string.error_incorrect_login));
                 mPasswordView.requestFocus();
             }
         }
@@ -310,6 +321,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private void CreateTestData() {
+        Toast.makeText(this, "Testuser: Wolfi Joop wird erstellt", Toast.LENGTH_SHORT).show();
         User newuser = new User();
         newuser.setEmail("wolfi@joop.com");
         newuser.setPassword("heidi");
@@ -320,6 +332,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         newuser.setBirthdate(new Date(44,11,18));//Jahr, Monat, Tag constructor with integer
         newuser.setGender(Gender.MALE);
 
+        showProgress(false);
 
         boolean res = false;
         try {
@@ -332,8 +345,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         if (res)
             Toast.makeText(this, "Wolfi hinzugefügt", Toast.LENGTH_SHORT).show();
+
         else
             Toast.makeText(this, "Fehler: Wolfi nicht hinzugefügt - Existiert evtl schon?", Toast.LENGTH_SHORT).show();
+        showProgress(false);
     }
 
 }

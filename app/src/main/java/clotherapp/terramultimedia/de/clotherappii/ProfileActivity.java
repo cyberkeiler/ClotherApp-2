@@ -1,6 +1,9 @@
 package clotherapp.terramultimedia.de.clotherappii;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,28 +12,25 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import de.ovgu.cse.se.ClotherAPI.models.Gender;
 
 
 public class ProfileActivity extends Activity {
-
+    private Activity ActivityContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
 
+        ActivityContext = this;
+
         TextView txticon = (TextView) findViewById(R.id.txtIcon);
         txticon.setTypeface(MainMenu.fontawesome);
 
         if (MainMenu.user.getGender() == Gender.MALE) {
             //TODO: Setze Profil Icon bei männlichen Usern auf blau!
-            txticon.setTextColor(getResources().getColor(R.color.blue_semi_transparent));
+            //txticon.setTextColor();
         }
 
         TextView txtName = (TextView) findViewById(R.id.txtname);
@@ -42,40 +42,41 @@ public class ProfileActivity extends Activity {
         //TODO: Datum richtig formatieren
         TextView txtGB = (TextView) findViewById(R.id.txtGeburtstag);
         txtGB.setText(MainMenu.user.getBirthdate().toString());
-        //hoffentlich funktioniert es so...
-        String Bdaystring = (String) txtGB.getText();
-        SimpleDateFormat Bday = new SimpleDateFormat("dd-mm-yyyy", Locale.GERMANY);
-        Date Birthday = new Date(0,1,1);
-        try {
-             Birthday = Bday.parse(Bdaystring);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        MainMenu.user.setBirthdate(Birthday);
-
 
         TextView txtReg = (TextView) findViewById(R.id.txtReg);
         txtReg.setText(MainMenu.user.getCreationTime().toString());
 
         //TODO: Fange fehler vom Creditscore ab
-        TextView txtScore = (TextView) findViewById(R.id.textscore);
-        if (MainMenu.user.getCreditscore() >= 0){
-            txtScore.setText(MainMenu.user.getCreditscore());
-        }
-        else {
-            Toast.makeText(this, "Fatal Error", Toast.LENGTH_SHORT);
-        }
+        //TextView txtScore = (TextView) findViewById(R.id.textscore);
+        //txtScore.setText(MainMenu.user.getCreditscore());
 
-
-        //TODO: Button um zurück ins Hauptmenü zu kommen
-
-        Button backToMainMenu = (Button) findViewById(R.id.backtoMain);
-        backToMainMenu.setOnClickListener(new View.OnClickListener() {
+        Button btnDeleteProfile = (Button) findViewById(R.id.btnDeleteProfile);
+        btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // back to main menu?
+
+
+                new AlertDialog.Builder(ActivityContext)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Profil löschen?")
+                        .setMessage("Bist du dir wirklich sicher das du dein Profil löschen möchtest?")
+                        .setPositiveButton("Ja, sicher!", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                new DeleteUser(ActivityContext).execute();
+                                Toast.makeText(ActivityContext, "Dein Profil wird gelöscht", Toast.LENGTH_SHORT).show();
+                                //TODO: showProgress - irgendeine Warteanimation
+                            }
+
+                        })
+                        .setNegativeButton("Ups, doch nicht!", null)
+                        .show();
+                // */
+
             }
         });
+
+        //TODO: Button um zurück ins Hauptmenü zu kommen
     }
 
     @Override

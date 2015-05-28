@@ -80,6 +80,11 @@ public class MainMenu extends Activity {
             }
         });
 
+        Button hot2 = (Button) findViewById(R.id.hot2);
+        Button not2 = (Button) findViewById(R.id.not2);
+        hot2.setTypeface(MainMenu.fontawesome);
+        not2.setTypeface(MainMenu.fontawesome);
+
 
         appIcon.setTypeface(fontawesome);
     }
