@@ -3,7 +3,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Deine Emailadresse</string>
     <string name="prompt_password">Passwort (optional)</string>
-    <string name="action_sign_in">Login oder Registrieren</string>
+    <string name="action_sign_in">Login</string>
     <string name="action_sign_in_short">Sign in</string>
 
     <string name="error_invalid_email">Diese Mailadresse ist ungültig</string>
