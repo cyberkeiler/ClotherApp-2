@@ -320,8 +320,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private void CreateTestData() {
-        showProgress(true);
-
+        Toast.makeText(this, "Testuser: Wolfi Joop wird erstellt", Toast.LENGTH_SHORT).show();
         User newuser = new User();
         newuser.setEmail("wolfi@joop.com");
         newuser.setPassword("heidi");
@@ -347,7 +346,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         else
             Toast.makeText(this, "Fehler: Wolfi nicht hinzugefügt - Existiert evtl schon?", Toast.LENGTH_SHORT).show();
-        showProgress(false);
     }
 
 }
