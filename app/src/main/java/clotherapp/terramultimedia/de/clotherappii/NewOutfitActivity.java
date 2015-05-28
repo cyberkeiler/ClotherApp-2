@@ -17,7 +17,7 @@ import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAuthenticatedException;
 import de.ovgu.cse.se.ClotherAPI.models.Occasion;
 
 
-public class MyOutfitsActivity extends Activity {
+public class NewOutfitActivity extends Activity {
     private String[] TestItems;
     //private Boolean mPicturesTask = null;
     private ListView occ_list;

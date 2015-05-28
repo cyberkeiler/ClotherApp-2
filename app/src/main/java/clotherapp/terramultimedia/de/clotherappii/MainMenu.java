@@ -60,7 +60,7 @@ public class MainMenu extends Activity {
         btnMyOutfits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainMenu.this, MyOutfitsActivity.class);
+                Intent i = new Intent(MainMenu.this, NewOutfitActivity.class);
                 startActivity(i);
             }
         });
