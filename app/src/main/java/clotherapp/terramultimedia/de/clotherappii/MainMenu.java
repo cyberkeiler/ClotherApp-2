@@ -86,7 +86,7 @@ public class MainMenu extends Activity {
         not2.setTypeface(MainMenu.fontawesome);
 
 
-        appIcon.setTypeface(fontawesome);
+        //appIcon.setTypeface(fontawesome);
     }
 
     @Override
