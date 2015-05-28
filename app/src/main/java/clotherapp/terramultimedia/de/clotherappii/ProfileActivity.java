@@ -1,21 +1,28 @@
 package clotherapp.terramultimedia.de.clotherappii;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.ovgu.cse.se.ClotherAPI.models.Gender;
 
 
 public class ProfileActivity extends Activity {
-
+    private Activity ActivityContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
+        ActivityContext = this;
 
         TextView txticon = (TextView) findViewById(R.id.txtIcon);
         txticon.setTypeface(MainMenu.fontawesome);
@@ -41,6 +48,31 @@ public class ProfileActivity extends Activity {
         //TODO: Fange fehler vom Creditscore ab
         //TextView txtScore = (TextView) findViewById(R.id.textscore);
         //txtScore.setText(MainMenu.user.getCreditscore());
+
+        Button btnDeleteProfile = (Button) findViewById(R.id.btnDeleteProfile);
+        btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //TODO: Bestätigungsdialog
+                new AlertDialog.Builder(ActivityContext)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Wirklich Profil löschen")
+                        .setMessage("Bist du dir sicher das du dein Profil löschen möchtest? \n Dadurch gehen alle deine Outfits verloren!")
+                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(ActivityContext, "Dein Profil wurde gelöscht", Toast.LENGTH_SHORT);
+                                finish();
+                            }
+
+                        })
+                        .setNegativeButton("Ups, doch nicht!", null)
+                        .show();
+                // */
+
+            }
+        });
 
         //TODO: Button um zurück ins Hauptmenü zu kommen
     }
