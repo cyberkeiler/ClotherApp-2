@@ -2,6 +2,8 @@ package clotherapp.terramultimedia.de.clotherappii;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -51,6 +53,16 @@ public class RegisterActivity extends Activity {
         EditText lastName = (EditText) findViewById(R.id.LastName);
         newuser.setFirstname(firstName.getText().toString());
         newuser.setLastname(lastName.getText().toString());
+
+        Button register = (Button) findViewById(R.id.Registerpls);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
 
 
         //TODO: AUSKOMMENTIEREN. Netzwerkanbindung habe ich für dich Vorbereitet:

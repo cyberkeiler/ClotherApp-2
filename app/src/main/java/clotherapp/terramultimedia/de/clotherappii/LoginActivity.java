@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -102,7 +103,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             public void onClick(View v) {
                 showProgress(true);
                 //TODO: Register Button verlinken wenn RegisterActivity funktioniert
-                CreateTestData();
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class ));
+                //CreateTestData();
             }
         });
 

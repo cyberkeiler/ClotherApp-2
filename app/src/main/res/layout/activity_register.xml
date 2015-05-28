@@ -124,8 +124,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zurück"
-            android:id="@+id/button2"
+            android:text="Registrieren"
+            android:id="@+id/Registerpls"
             android:gravity="center_horizontal"
             android:layout_centerHorizontal="true"
             android:layout_alignBottom="@+id/linearLayout2" />
