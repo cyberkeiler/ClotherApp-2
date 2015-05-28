@@ -54,7 +54,7 @@ public class ProfileActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                //TODO: Bestätigungsdialog
+
                 new AlertDialog.Builder(ActivityContext)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("Wirklich Profil löschen")
@@ -62,8 +62,11 @@ public class ProfileActivity extends Activity {
                         .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(ActivityContext, "Dein Profil wurde gelöscht", Toast.LENGTH_SHORT);
-                                finish();
+                                //TODO: Userprofil soll gelöscht werden - User soll beim Loginscreen landen!
+                                //eventuell macht das das MainMenu automatisch, wenn er beim zurückkehren kein user mehr findet! -> Ausprobieren
+                                new DeleteUser(ActivityContext).execute();
+                                Toast.makeText(ActivityContext, "Dein Profil wird gelöscht", Toast.LENGTH_SHORT);
+
                             }
 
                         })
