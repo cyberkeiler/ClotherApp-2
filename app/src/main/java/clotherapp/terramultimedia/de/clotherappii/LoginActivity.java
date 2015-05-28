@@ -306,8 +306,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             if (success) {
                 finish();
             } else {
-                //TODO: Unterscheidet noch nicht ob Passwort falsch oder User nicht existiert!
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                //TODO: Unterscheidet noch nicht ob Passwort falsch oder User nicht existiert! -> NICHT MÖGLICH (fehlt in API)
+                mPasswordView.setError(getString(R.string.error_incorrect_login));
                 mPasswordView.requestFocus();
             }
         }
@@ -320,6 +320,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private void CreateTestData() {
+        showProgress(true);
+
         User newuser = new User();
         newuser.setEmail("wolfi@joop.com");
         newuser.setPassword("heidi");
@@ -342,8 +344,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         if (res)
             Toast.makeText(this, "Wolfi hinzugefügt", Toast.LENGTH_SHORT).show();
+
         else
             Toast.makeText(this, "Fehler: Wolfi nicht hinzugefügt - Existiert evtl schon?", Toast.LENGTH_SHORT).show();
+        showProgress(false);
     }
 
 }

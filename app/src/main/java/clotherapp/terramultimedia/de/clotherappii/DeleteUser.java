@@ -22,6 +22,7 @@ public class DeleteUser extends AsyncTask<Void, Void, Boolean> {
 
     DeleteUser(Activity activity_){
         activity = activity_;
+        context = activity_;
     }
 
 
@@ -43,10 +44,11 @@ public class DeleteUser extends AsyncTask<Void, Void, Boolean> {
     protected void onPostExecute(final Boolean success) {
 
         if (success) {
-            Toast.makeText(activity, "Profil wurde gelöscht!", Toast.LENGTH_SHORT);
+            Toast.makeText(activity, "Profil wurde gelöscht!", Toast.LENGTH_SHORT).show();
+            MainMenu.user = null;
             activity.finish();
         } else {
-            Toast.makeText(activity, "Dein Profil konnte nicht gelöscht werden", Toast.LENGTH_SHORT);
+            Toast.makeText(activity, "Dein Profil konnte nicht gelöscht werden", Toast.LENGTH_SHORT).show();
         }
     }
 }

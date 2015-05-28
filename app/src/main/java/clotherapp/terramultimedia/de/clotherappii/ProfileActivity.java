@@ -2,6 +2,7 @@ package clotherapp.terramultimedia.de.clotherappii;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
@@ -57,16 +58,14 @@ public class ProfileActivity extends Activity {
 
                 new AlertDialog.Builder(ActivityContext)
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("Wirklich Profil löschen")
-                        .setMessage("Bist du dir sicher das du dein Profil löschen möchtest? \n Dadurch gehen alle deine Outfits verloren!")
-                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                        .setTitle("Profil löschen?")
+                        .setMessage("Bist du dir wirklich sicher das du dein Profil löschen möchtest?")
+                        .setPositiveButton("Ja, sicher!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //TODO: Userprofil soll gelöscht werden - User soll beim Loginscreen landen!
-                                //eventuell macht das das MainMenu automatisch, wenn er beim zurückkehren kein user mehr findet! -> Ausprobieren
                                 new DeleteUser(ActivityContext).execute();
-                                Toast.makeText(ActivityContext, "Dein Profil wird gelöscht", Toast.LENGTH_SHORT);
-
+                                Toast.makeText(ActivityContext, "Dein Profil wird gelöscht", Toast.LENGTH_SHORT).show();
+                                //TODO: showProgress - irgendeine Warteanimation
                             }
 
                         })
