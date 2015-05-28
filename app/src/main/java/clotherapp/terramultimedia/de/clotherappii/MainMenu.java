@@ -84,23 +84,24 @@ public class MainMenu extends Activity {
         Button not2 = (Button) findViewById(R.id.not2);
         hot2.setTypeface(MainMenu.fontawesome);
         not2.setTypeface(MainMenu.fontawesome);
-
-
-        //appIcon.setTypeface(fontawesome);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        //Wid das Hauptmenü wieder aufgerufen wird hier der user gechecked
         if (user != null) {
+            //Setze Begrüßung
             if (user.getFirstname() != null)
                 textWelcome.setText("Hallo " + user.getFirstname() + "!");
             if (user.getCreditscore() > 0)
                 textScore.setText(user.getCreditscore());
         } else {
+            //kein User -> Aufforderung zum Login
             Toast.makeText(this, "Bitte einloggen!", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainMenu.this, LoginActivity.class);
             //Animation zum MainMenu
+            // TODO: Check ob wirksam, ansonsten können wir diese Zeile wieder entfernen
             overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
             startActivity(i);
         }
