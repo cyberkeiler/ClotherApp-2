@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
-        android:id="@+id/linearLayout5">
+        android:id="@+id/linearLayout5"
+        android:gravity="center|top">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -53,11 +54,13 @@
             android:id="@+id/txtPictureOccasion" />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="267dp"
+            android:layout_height="253dp"
             android:id="@+id/imageView2"
-            android:layout_weight="0.75"
-            android:background="@color/color_white" />
+            android:background="@color/color_white"
+            android:maxHeight="250dp"
+            android:contentDescription="Outfit Image"
+            android:adjustViewBounds="true" />
 
         <TextView
             android:layout_width="match_parent"
