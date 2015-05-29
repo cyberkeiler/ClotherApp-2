@@ -1,6 +1,7 @@
 package clotherapp.terramultimedia.de.clotherappii;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
+
+import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
+import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
+import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
+import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAddedException;
+import de.ovgu.cse.se.ClotherAPI.models.Gender;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
@@ -38,7 +49,7 @@ public class RegisterActivity extends Activity {
                 newuser.setEmail (EmailString);
             }
             else {
-                Toast.makeText(getApplicationContext(), "Ungültige Emailadresse", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "Ungültige Emailadresse", Toast.LENGTH_SHORT).show();
                 Email.setText("");
                 Email.requestFocus();
                 return;
@@ -48,8 +59,8 @@ public class RegisterActivity extends Activity {
             EditText passwordConfirmation = (EditText) findViewById(R.id.confirmpassword);
             String passwordAsString = password.getText().toString();
             String passwordConfirmAsString = passwordConfirmation.getText().toString();
-            if (isPasswordValid(passwordAsString) && isPasswordIdentical(passwordAsString, passwordConfirmAsString)){
-                Toast.makeText(getApplicationContext(), "Passwörter stimmen nicht überein",Toast.LENGTH_SHORT);
+            if (!isPasswordValid(passwordAsString)&& !isPasswordIdentical(passwordAsString, passwordConfirmAsString)){
+                Toast.makeText(getApplicationContext(), "Passwörter stimmen nicht überein",Toast.LENGTH_SHORT).show();
                     password.setText("");
                     passwordConfirmation.setText("");
                     password.requestFocus();
@@ -60,35 +71,43 @@ public class RegisterActivity extends Activity {
             }
 
         //Birthday
+                EditText BDay = (EditText) findViewById (R.id.Birthday);
+                String Birthday = BDay.getText().toString();
+                Date myBDay = new Date();
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMAN);
+                myBDay.parse(Birthday);
+                df.format(myBDay);
+                newuser.setBirthdate(myBDay);
         //Firstname & LastName
             EditText firstName = (EditText) findViewById(R.id.FirstName);
             EditText lastName = (EditText) findViewById(R.id.LastName);
             newuser.setFirstname(firstName.getText().toString());
             newuser.setLastname(lastName.getText().toString());
-                        }
+            newuser.setGender(Gender.MALE);
+
+                boolean res = false;
+                try {
+                    res = new AddUser().execute(newuser).get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+
+                if (res)
+                    Toast.makeText(getApplicationContext(), "Profil erfolgreich erstellt", Toast.LENGTH_SHORT).show();
+                    //TODO: Bei erfolgreicher Registrierung soll der User automatische eingeloggt sein
+                    //dazu: MainMenu.Resume() und MainMenu.user = getUser setzen!
+                    //MainMenu.Resume();
+                    // MainMenu.user = MainMenu.provider.getUser();
+                else
+                    Toast.makeText(getApplicationContext(), "Fehler bei Registrierung!", Toast.LENGTH_SHORT).show();
+
+
+            }
         });
-        //TODO: AUSKOMMENTIEREN. Netzwerkanbindung habe ich für dich Vorbereitet:
 
-        /*
-        boolean res = false;
-        try {
-            res = new AddUser().execute(newuser).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        if (res)
-            Toast.makeText(this, "Profil erfolgreich erstellt", Toast.LENGTH_SHORT).show();
-            //TODO: Bei erfolgreicher Registrierung soll der User automatische eingeloggt sein
-            //dazu: MainMenu.Resume() und MainMenu.user = getUser setzen!
-            //MainMenu.Resume();
-            // MainMenu.user = MainMenu.provider.getUser();
-        else
-            Toast.makeText(this, "Fehler bei Registrierung!", Toast.LENGTH_SHORT).show();
-
-         */
 
     }
 
@@ -104,5 +123,20 @@ public class RegisterActivity extends Activity {
     private boolean isPasswordIdentical(String password, String confirmpassword) {
         return password.equals(confirmpassword);
 
+
+    }
+
+    class AddUser extends AsyncTask<User, Void, Boolean>{
+
+        @Override
+        protected Boolean doInBackground(User... params) {
+            IObjectProvider provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.TEST);
+            try {
+                provider.addUser(params[0]);
+            } catch (UserNotAddedException e) {
+                return false;
+            }
+            return true;
+        }
     }
 }
