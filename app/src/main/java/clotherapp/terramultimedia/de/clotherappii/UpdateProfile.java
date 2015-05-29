@@ -34,11 +34,11 @@ public class UpdateProfile extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_update_profile);
 
-    //Setzt die Icon Schrift für das Symbol
+    //Setzt die Icon Schrift fï¿½r das Symbol
     TextView RegisterIcon = (TextView) findViewById(R.id.textView2);
     RegisterIcon .setTypeface(MainMenu.fontawesome);
 
-    //TODO: Erstelle Textfeldabfrage usw. plausibilitätsprüfung und erstelle angand dieser einen User
+    //TODO: Erstelle Textfeldabfrage usw. plausibilitï¿½tsprï¿½fung und erstelle angand dieser einen User
 
     //email
 
@@ -48,12 +48,13 @@ public class UpdateProfile extends Activity {
         @Override
         public void onClick(View v) {
             User OurUser = new User();
+
             EditText Email = (EditText) findViewById(R.id.EmailAdress);
             String EmailString = Email.getText().toString();
             if (isEmailValid(EmailString)) {
                 OurUser.setEmail(EmailString);
             } else {
-                Toast.makeText(getApplicationContext(), "Ungültige Emailadresse", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "Ungï¿½ltige Emailadresse", Toast.LENGTH_SHORT);
                 Email.setText("");
                 Email.requestFocus();
                 return;
@@ -64,7 +65,7 @@ public class UpdateProfile extends Activity {
             String passwordAsString = password.getText().toString();
             String passwordConfirmAsString = passwordConfirmation.getText().toString();
             if (isPasswordValid(passwordAsString) && isPasswordIdentical(passwordAsString, passwordConfirmAsString)) {
-                Toast.makeText(getApplicationContext(), "Passwörter stimmen nicht überein", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "Passwï¿½rter stimmen nicht ï¿½berein", Toast.LENGTH_SHORT);
                 password.setText("");
                 passwordConfirmation.setText("");
                 password.requestFocus();
@@ -90,10 +91,10 @@ public class UpdateProfile extends Activity {
                 e.printStackTrace();
             }
             if (result){
-                Toast.makeText(getApplicationContext(), "Profil geändert!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Profil geï¿½ndert!", Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(getApplicationContext(), "Profiländerung FAILED", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Profilï¿½nderung FAILED", Toast.LENGTH_LONG).show();
             }
             finish();
         }
@@ -102,7 +103,7 @@ public class UpdateProfile extends Activity {
 
 }
 
-    // Funktionen zum prüfen
+    // Funktionen zum prï¿½fen
     private boolean isEmailValid(String email) {
         return email.contains("@");
     }

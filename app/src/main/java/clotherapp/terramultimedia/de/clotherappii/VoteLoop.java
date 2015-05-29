@@ -3,6 +3,7 @@ package clotherapp.terramultimedia.de.clotherappii;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -70,6 +71,7 @@ public class VoteLoop extends Activity {
         });
 
         //Bilddetails
+        imageview = (ImageView) findViewById(R.id.imageView2);
         creatoricon = (TextView) findViewById(R.id.txtPictureUsericon);
         creatorname = (TextView) findViewById(R.id.txtPictureUsername);
         occasion = (TextView) findViewById(R.id.txtPictureOccasion);
