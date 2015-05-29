@@ -6,46 +6,117 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="clotherapp.terramultimedia.de.clotherappii.VoteLoop">
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:id="@+id/linearLayout5">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lytUserinfo"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="28dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/icon_user"
+                android:id="@+id/txtPictureUsericon"
+                android:textColor="@color/pink" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Wolfgang"
+                android:id="@+id/txtPictureUsername"
+                android:layout_weight="0.78" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="vor 1h"
+                android:id="@+id/txtPictureDate" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="[Occasion]"
+            android:id="@+id/txtPictureOccasion" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_weight="0.75"
+            android:background="@color/color_white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="#YOLO #GNTM"
+            android:id="@+id/txtPictureTags"
+            android:layout_weight="0.08" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HOT"
-        android:id="@+id/btnhot"
-        android:layout_marginBottom="91dp"
-        android:textSize="@dimen/fonsize_big"
+        android:layout_weight="0.07"
+        android:gravity="center|center_vertical"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/btnnot" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:weightSum="1"
+        android:id="@+id/lytVoteBar">
 
-    <Button
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_not"
+            android:id="@+id/btnnot2"
+            android:textSize="@dimen/fonsize_big"
+            android:textColor="@color/color_white"
+            android:background="@color/color_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="     HOT \n or \nNOT    "
+            android:id="@+id/textView12"
+            android:layout_weight="0.19"
+            android:phoneNumber="false"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_heart"
+            android:id="@+id/btnhot2"
+            android:textSize="@dimen/fonsize_big"
+            android:textColor="@color/white"
+            android:background="@color/pink" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NOT"
-        android:id="@+id/btnnot"
-        android:layout_marginStart="43dp"
-        android:textSize="@dimen/fonsize_big"
-        android:textColor="@color/color_red"
-        android:layout_alignTop="@+id/btnhot"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/PictureprogressBar"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="80dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/icon_heart"
-        android:id="@+id/btnhot2"
-        android:textSize="@dimen/fonsize_big"
-        android:textColor="@color/white"
-        android:background="@color/pink"
-        android:layout_below="@+id/btnnot"
-        android:layout_alignEnd="@+id/btnhot" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/icon_not"
-        android:id="@+id/btnnot2"
-        android:textSize="@dimen/fonsize_big"
-        android:textColor="@color/color_white"
-        android:background="@color/color_black"
-        android:layout_below="@+id/btnnot"
-        android:layout_alignStart="@+id/btnnot" />
 </RelativeLayout>
