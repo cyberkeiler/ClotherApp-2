@@ -55,7 +55,7 @@ public class ProfileActivity extends Activity {
         btnChangeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), UpdateProfile.class));
             }
         });
 

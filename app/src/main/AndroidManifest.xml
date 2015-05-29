@@ -43,6 +43,16 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
+        <activity
+            android:name=".UpdateProfile"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_update_profile"
+            android:parentActivityName=".ProfileActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="clotherapp.terramultimedia.de.clotherappii.ProfileActivity" />
+        </activity>
     </application>
 
 </manifest>
