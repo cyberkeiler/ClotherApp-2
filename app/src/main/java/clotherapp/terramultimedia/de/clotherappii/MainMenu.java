@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
 import de.ovgu.cse.se.ClotherAPI.models.User;
 
@@ -22,6 +25,9 @@ public class MainMenu extends Activity {
 
     private TextView textWelcome;
     private TextView textScore;
+
+    private final SimpleDateFormat df_Tag = new SimpleDateFormat("dd.MM.YYYY");
+    private final SimpleDateFormat df_TagUhrzeit = new SimpleDateFormat("dd.MM.YYYY hh:mm");
 
 
 
