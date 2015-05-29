@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 import clotherapp.terramultimedia.de.clotherappii.util.SystemUiHider;
@@ -47,7 +50,8 @@ public class UpdateProfile extends Activity {
     updateProfile.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            User OurUser = new User();
+            IObjectProvider provider = ObjectProviderFactory.getObjectProvider(ConfigurationContext.TEST);
+            User OurUser = provider.getUser();
             EditText Email = (EditText) findViewById(R.id.EmailAdress);
             String EmailString = Email.getText().toString();
             if (isEmailValid(EmailString)) {
@@ -74,6 +78,13 @@ public class UpdateProfile extends Activity {
             }
 
             //Birthday
+            EditText BDay = (EditText) findViewById(R.id.Birthday);
+            String Birthday = BDay.getText().toString();
+            Date myBDay = new Date();
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
+            myBDay.parse(Birthday);
+            df.format(myBDay);
+            OurUser.setBirthdate(myBDay);
             //Firstname & LastName
             EditText firstName = (EditText) findViewById(R.id.FirstName);
             EditText lastName = (EditText) findViewById(R.id.LastName);

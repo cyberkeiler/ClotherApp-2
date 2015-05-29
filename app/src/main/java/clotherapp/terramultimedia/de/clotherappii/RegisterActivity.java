@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
@@ -71,19 +70,29 @@ public class RegisterActivity extends Activity {
             }
 
         //Birthday
+                //TODO: Date übernehmen...
                 EditText BDay = (EditText) findViewById (R.id.Birthday);
                 String Birthday = BDay.getText().toString();
-                Date myBDay = new Date();
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMAN);
-                myBDay.parse(Birthday);
-                df.format(myBDay);
+                Date myBDay = new Date(1,1,2000);
+                //SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
+                //myBDay.parse(Birthday);
+                //df.format(myBDay);
                 newuser.setBirthdate(myBDay);
         //Firstname & LastName
             EditText firstName = (EditText) findViewById(R.id.FirstName);
             EditText lastName = (EditText) findViewById(R.id.LastName);
             newuser.setFirstname(firstName.getText().toString());
             newuser.setLastname(lastName.getText().toString());
-            newuser.setGender(Gender.MALE);
+            //TODO: gender auswahl
+            Switch Genderswitch = new Switch(getApplicationContext());
+                Genderswitch.setTextOff("MALE");
+
+                Genderswitch.setTextOn("FEMALE");
+                Genderswitch.getTextOn();
+                if (Genderswitch.isChecked())
+                    newuser.setGender(Gender.FEMALE);
+                else
+                    newuser.setGender(Gender.MALE);
 
                 boolean res = false;
                 try {
@@ -125,6 +134,8 @@ public class RegisterActivity extends Activity {
 
 
     }
+
+
 
     class AddUser extends AsyncTask<User, Void, Boolean>{
 
