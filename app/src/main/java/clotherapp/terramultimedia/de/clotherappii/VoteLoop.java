@@ -143,7 +143,7 @@ public class VoteLoop extends Activity {
         if(picture.getCreator() != null)
             creatorname.setText(picture.getCreator().getFirstname());
         else
-            creatorname.setText("-User gelöscht-");
+            creatorname.setText("Nulluser");
 
         //Occasion
         if(picture.getOccasion() != null)
