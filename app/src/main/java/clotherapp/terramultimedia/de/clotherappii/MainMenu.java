@@ -26,8 +26,8 @@ public class MainMenu extends Activity {
     private TextView textWelcome;
     private TextView textScore;
 
-    private final SimpleDateFormat df_Tag = new SimpleDateFormat("dd.MM.YYYY");
-    private final SimpleDateFormat df_TagUhrzeit = new SimpleDateFormat("dd.MM.YYYY hh:mm");
+    public static final SimpleDateFormat df_Tag = new SimpleDateFormat("dd.MM.yyyy");
+    public static final SimpleDateFormat df_TagUhrzeit = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
 
 

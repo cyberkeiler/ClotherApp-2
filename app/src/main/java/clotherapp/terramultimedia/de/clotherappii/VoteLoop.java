@@ -98,6 +98,7 @@ public class VoteLoop extends Activity {
         //TODO: VoteButtons gesperrt solange PictureList geladen wird
         //TODO: ADDVote
         //TODO: Prüfe ob eigenes Bild oder ob ich dieses Bild bereits bewertet habe
+        //TODO: Füge Credits für Vote hinzu
 
         showNextPicture();
     }
@@ -149,6 +150,12 @@ public class VoteLoop extends Activity {
             occasion.setText(picture.getOccasion().getName());
         else
             occasion.setText("[-keine Occasion-]");
+
+        //TODO: Tags in String einfügen mit Hastag davor
+        //Tags
+        if(picture.getTags() != null){
+
+        }
 
         //Erstellungsdatum
         if(picture.getCreationTime() != null)
