@@ -23,7 +23,9 @@ import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
 import de.ovgu.cse.se.ClotherAPI.exceptions.PictureNotFoundException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAuthenticatedException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
+import de.ovgu.cse.se.ClotherAPI.exceptions.VoteNotAddedException;
 import de.ovgu.cse.se.ClotherAPI.models.Picture;
+import de.ovgu.cse.se.ClotherAPI.models.Vote;
 
 
 public class VoteLoop extends Activity {
@@ -167,6 +169,30 @@ public class VoteLoop extends Activity {
                 imageview.setImageBitmap(bitmap);
         }
 
+    }
+
+    public class VoteTask extends AsyncTask<Void, Void, Boolean>{
+        private Vote vote;
+        VoteTask(Picture picture, int rating){
+            vote = new Vote();
+            vote.setCreator(MainMenu.user);
+            vote.setPicture(picture);
+            vote.setRating(rating);
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                MainMenu.provider.addVote(vote);
+            } catch (VoteNotAddedException e) {
+                e.printStackTrace();
+                return false;
+            } catch (UserNotAuthenticatedException e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+        }
     }
 
 
