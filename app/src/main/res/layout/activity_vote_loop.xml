@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="vor 1h"
-                android:id="@+id/txtPictureDate" />
+                android:id="@+id/txtPictureDate"
+                android:gravity="right" />
         </LinearLayout>
 
         <TextView

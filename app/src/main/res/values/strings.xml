@@ -4,7 +4,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Einstellungen</string>
-    <string name="title_activity_vote_loop">VoteLoop</string>
+    <string name="title_activity_vote_loop">Hot Or Not?</string>
 
     <string name="icon_heart">&#xf004;</string>
     <string name="icon_user">&#xf007;</string>
@@ -12,7 +12,7 @@
     <string name="icon_not">&#xf165;</string>
 
     <string name="icon_cam">&#xf030;</string>
-    <string name="title_activity_new_outfit">Neues Outfitt</string>
+    <string name="title_activity_new_outfit">Neues Outfit</string>
     <string name="title_activity_profile">Dein Profil</string>
     <string name="title_activity_register">RegisterActivity</string>
 
