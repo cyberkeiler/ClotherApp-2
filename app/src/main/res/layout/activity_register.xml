@@ -116,6 +116,14 @@
                 android:id="@+id/LastName"
                 android:hint="Mustermann" />
 
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Geschlecht"
+                android:id="@+id/GenderSwitch"
+                android:textOff = "Männlich"
+                android:textOn = "Weiblich"/>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
