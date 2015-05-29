@@ -71,18 +71,26 @@
         </LinearLayout>
 
         <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Deine Outfit"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal" />
-
-        <Button
             android:id="@+id/btnOutfits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Neues Outfit"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            style="@style/TextAppearance.AppCompat.Small.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dein Kleinderschrank"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            style="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="deine votes"
+            android:id="@+id/button2"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
