@@ -73,7 +73,7 @@ public class RegisterActivity extends Activity {
                 //TODO: Date übernehmen...
                 EditText BDay = (EditText) findViewById (R.id.Birthday);
                 String Birthday = BDay.getText().toString();
-                Date myBDay = new Date(1,1,2000);
+                Date myBDay = new Date(100,1,1);
                 //SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
                 //myBDay.parse(Birthday);
                 //df.format(myBDay);
@@ -104,8 +104,9 @@ public class RegisterActivity extends Activity {
                 }
 
 
-                if (res)
+                if (res){
                     Toast.makeText(getApplicationContext(), "Profil erfolgreich erstellt", Toast.LENGTH_SHORT).show();
+                        finish();}
                     //TODO: Bei erfolgreicher Registrierung soll der User automatische eingeloggt sein
                     //dazu: MainMenu.Resume() und MainMenu.user = getUser setzen!
                     //MainMenu.Resume();
