@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
@@ -72,8 +73,8 @@ public class RegisterActivity extends Activity {
         //Birthday
                 EditText BDay = (EditText) findViewById (R.id.Birthday);
                 String Birthday = BDay.getText().toString();
-                Date myBDay = null;
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                Date myBDay = new Date();
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMAN);
                 myBDay.parse(Birthday);
                 df.format(myBDay);
                 newuser.setBirthdate(myBDay);
@@ -83,7 +84,6 @@ public class RegisterActivity extends Activity {
             newuser.setFirstname(firstName.getText().toString());
             newuser.setLastname(lastName.getText().toString());
             newuser.setGender(Gender.MALE);
-                //TODO: AUSKOMMENTIEREN. Netzwerkanbindung habe ich für dich Vorbereitet:
 
                 boolean res = false;
                 try {
