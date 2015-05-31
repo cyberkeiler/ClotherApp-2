@@ -123,11 +123,21 @@ public class RegisterActivity extends Activity {
 
     // Funktionen zum prüfen
     private boolean isEmailValid(String email) {
-        return email.contains("@");
+        return email.contains("@") && email.contains(".");
     }
 
     private boolean isPasswordValid(String password) {
-        return password.length() > 4;
+        if( password.length() >= 4){
+            return true;
+        } // TODO: password needs Großbuchstaben und zahl
+            /*if (password.matches("[A-Z]") && password.matches ("[0-9]")){
+                return true;
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Password benötigt alphanumerische Zeichen und mindestens 1 Großbuchstaben", Toast.LENGTH_SHORT).show();
+                return false;}}*/
+        else {Toast.makeText(getApplicationContext(), "Password zu kurz", Toast.LENGTH_LONG).show();
+        return false;}
     }
 
     private boolean isPasswordIdentical(String password, String confirmpassword) {
