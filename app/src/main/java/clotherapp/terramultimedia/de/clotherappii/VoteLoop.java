@@ -3,7 +3,6 @@ package clotherapp.terramultimedia.de.clotherappii;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -13,16 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
-import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
 import de.ovgu.cse.se.ClotherAPI.exceptions.PictureNotFoundException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAuthenticatedException;
-import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.VoteNotAddedException;
 import de.ovgu.cse.se.ClotherAPI.models.Picture;
 import de.ovgu.cse.se.ClotherAPI.models.Vote;
@@ -101,6 +95,9 @@ public class VoteLoop extends Activity {
         //TODO: ADDVote
         //TODO: Prüfe ob eigenes Bild oder ob ich dieses Bild bereits bewertet habe
         //TODO: Füge Credits für Vote hinzu
+        /*User myUser = MainMenu.user; //je vote 1 punkt ?
+        myUser.setCreditscore(myUser.getCreditscore() + 1);
+        */
 
         showNextPicture();
     }
