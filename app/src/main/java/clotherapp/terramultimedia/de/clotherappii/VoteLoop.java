@@ -23,7 +23,9 @@ import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
 import de.ovgu.cse.se.ClotherAPI.exceptions.PictureNotFoundException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAuthenticatedException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
+import de.ovgu.cse.se.ClotherAPI.exceptions.VoteNotAddedException;
 import de.ovgu.cse.se.ClotherAPI.models.Picture;
+import de.ovgu.cse.se.ClotherAPI.models.Vote;
 
 
 public class VoteLoop extends Activity {
@@ -98,6 +100,7 @@ public class VoteLoop extends Activity {
         //TODO: VoteButtons gesperrt solange PictureList geladen wird
         //TODO: ADDVote
         //TODO: Prüfe ob eigenes Bild oder ob ich dieses Bild bereits bewertet habe
+        //TODO: Füge Credits für Vote hinzu
 
         showNextPicture();
     }
@@ -142,13 +145,19 @@ public class VoteLoop extends Activity {
         if(picture.getCreator() != null)
             creatorname.setText(picture.getCreator().getFirstname());
         else
-            creatorname.setText("-User gelöscht-");
+            creatorname.setText("Nulluser");
 
         //Occasion
         if(picture.getOccasion() != null)
             occasion.setText(picture.getOccasion().getName());
         else
             occasion.setText("[-keine Occasion-]");
+
+        //TODO: Tags in String einfügen mit Hastag davor
+        //Tags
+        if(picture.getTags() != null){
+
+        }
 
         //Erstellungsdatum
         if(picture.getCreationTime() != null)
@@ -160,6 +169,30 @@ public class VoteLoop extends Activity {
                 imageview.setImageBitmap(bitmap);
         }
 
+    }
+
+    public class VoteTask extends AsyncTask<Void, Void, Boolean>{
+        private Vote vote;
+        VoteTask(Picture picture, int rating){
+            vote = new Vote();
+            vote.setCreator(MainMenu.user);
+            vote.setPicture(picture);
+            vote.setRating(rating);
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                MainMenu.provider.addVote(vote);
+            } catch (VoteNotAddedException e) {
+                e.printStackTrace();
+                return false;
+            } catch (UserNotAuthenticatedException e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+        }
     }
 
 

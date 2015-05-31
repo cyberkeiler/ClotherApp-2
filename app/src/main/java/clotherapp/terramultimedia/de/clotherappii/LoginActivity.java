@@ -70,7 +70,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mPasswordView = (EditText) findViewById(R.id.password);
 
         //Testuser
-        mEmailView.setText("wolfi@joop.com");
+        mEmailView.setText("wolfi@joop.de");
         mPasswordView.setText("heidi");
 
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {

@@ -41,10 +41,10 @@ public class ProfileActivity extends Activity {
 
         //TODO: Datum richtig formatieren might be done
         TextView txtGB = (TextView) findViewById(R.id.txtGeburtstag);
-        txtGB.setText(MainMenu.user.getBirthdate().toString());
+        txtGB.setText(MainMenu.df_Tag.format(MainMenu.user.getBirthdate()));
 
         TextView txtReg = (TextView) findViewById(R.id.txtReg);
-        txtReg.setText(MainMenu.user.getCreationTime().toString());
+        txtReg.setText(MainMenu.df_TagUhrzeit.format(MainMenu.user.getCreationTime()));
 
         //TODO: Fange fehler vom Creditscore ab // Was fürn fehler?
         TextView txtScore = (TextView) findViewById(R.id.textscore);

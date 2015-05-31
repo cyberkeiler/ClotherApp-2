@@ -102,9 +102,13 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="50dp"
+            android:layout_alignEnd="@+id/btnDeleteProfile"
+            android:weightSum="1"
+            android:gravity="center">
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -114,12 +118,13 @@
                 android:id="@+id/ChangeData"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/btnDeleteProfile" />
+                android:layout_toStartOf="@+id/btnDeleteProfile"
+                android:layout_weight="0.32" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:text="Profil löschen"
                 android:id="@+id/btnDeleteProfile"
                 android:layout_alignParentTop="true"
@@ -127,14 +132,22 @@
                 android:textColor="@color/white"
                 android:background="@color/color_red" />
 
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Zurück"
                 android:id="@+id/backtoMain"
+                android:layout_gravity="center_horizontal"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/btnDeleteProfile" />
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
 
     </LinearLayout>
