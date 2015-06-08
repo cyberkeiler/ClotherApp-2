@@ -14,3 +14,9 @@ Update: TEST Betrieb erfolgreich!! Wolfi als Testuser erstellt. <br/>
 Wiki der API: https://bitbucket.org/cse_admin/se_clother_api/wiki/Home<br/>
 Floating Action Buttons: https://github.com/makovkastar/FloatingActionButton<br/>
 Font Awesome Icons: http://fortawesome.github.io/Font-Awesome/icons/<br/>
+
+
+Wischfunktionen Beispiel:
+http://netzkinder.blogspot.de/2013/02/android-gestenerkennung-swipe.html
+http://developer.android.com/training/gestures/detector.html
+http://de.androids.help/q2140
