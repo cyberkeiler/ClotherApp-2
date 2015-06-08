@@ -17,6 +17,6 @@ Font Awesome Icons: http://fortawesome.github.io/Font-Awesome/icons/<br/>
 
 
 Wischfunktionen Beispiel:
-http://netzkinder.blogspot.de/2013/02/android-gestenerkennung-swipe.html
-http://developer.android.com/training/gestures/detector.html
+http://netzkinder.blogspot.de/2013/02/android-gestenerkennung-swipe.html <br/>
+http://developer.android.com/training/gestures/detector.html <br/>
 http://de.androids.help/q2140
