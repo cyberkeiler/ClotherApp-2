@@ -5,8 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,6 +42,8 @@ public class VoteLoop extends Activity {
     private TextView tags;
     private TextView uploaded;
 
+    TextView ResponseIcon;
+
     private int votebonus = 0;
 
     static final int VOTE_HOT = 4;
@@ -55,17 +60,22 @@ public class VoteLoop extends Activity {
         btnhot2.setTypeface(MainMenu.fontawesome);
         btnnot2.setTypeface(MainMenu.fontawesome);
 
+        ResponseIcon = (TextView) findViewById(R.id.ResponseTxt);
+        ResponseIcon.setTypeface(MainMenu.fontawesome);
+
+
         btnhot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VoteAndNext(5);
+                LikeWithAnim(true);
             }
         });
 
         btnnot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VoteAndNext(0);
+                LikeWithAnim(false);
+
             }
         });
 
@@ -101,7 +111,8 @@ public class VoteLoop extends Activity {
             }
 
             public void onSwipeRight() {
-                Toast.makeText(VoteLoop.this, "right", Toast.LENGTH_SHORT).show();
+                LikeWithAnim(true);
+
             }
 
             public void onSwipeLeft() {
@@ -109,7 +120,8 @@ public class VoteLoop extends Activity {
             }
 
             public void onSwipeBottom() {
-                Toast.makeText(VoteLoop.this, "bottom", Toast.LENGTH_SHORT).show();
+                LikeWithAnim(false);
+
             }
 
             public boolean onTouch(View v, MotionEvent event) {
@@ -125,17 +137,63 @@ public class VoteLoop extends Activity {
         //TODO: Update User, dass der neue Punktestand auch auf dem Server ist
     }
 
-    private void VoteAndNext(int rating) {
+    private void LikeWithAnim(boolean like){
+        //TODO: Prüfe ob eigenes Bild oder ob ich dieses Bild bereits bewertet habe
+
+        Animation out = new AlphaAnimation(1.0f, 0.0f);
+        out.setDuration(2000);
+
+        if(like) {
+            sendVote(5);
+            ResponseIcon.setText(R.string.icon_heart);
+            ResponseIcon.setTextColor(getResources().getColor(R.color.pink));
+        }
+        else {
+            sendVote(0);
+            ResponseIcon.setText(R.string.icon_not);
+            ResponseIcon.setTextColor(getResources().getColor(R.color.color_black));
+        }
+
+        ResponseIcon.setVisibility(View.VISIBLE);
+        ResponseIcon.startAnimation(out);
+
+        //Blendet den Response Icon nach Ende Animation aus
+        final Handler AftAnimHandler = new Handler();
+        AftAnimHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ResponseIcon.setVisibility(View.INVISIBLE);
+            }
+        }, 1950);
+
+        //Blende Bild aus
+        Animation out2 = new AlphaAnimation(1.0f, 0.0f);
+        out2.setDuration(1000);
+        imageview.startAnimation(out2);
+
+        Handler AftAnim2Handler = new Handler();
+        AftAnim2Handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Blende nacg 0.5s ausblenden das neue Bild ein!
+                Animation in = new AlphaAnimation(0.0f, 1.0f);
+                in.setDuration(1000);
+
+                showNextPicture();
+                imageview.startAnimation(in);
+            }
+        }, 980);
+
+    }
+
+    private void sendVote(int rating) {
         votebonus ++;
         //TODO: VoteButtons gesperrt solange PictureList geladen wird
         //TODO: ADDVote - Testen!
         VoteTask mVoteTask = new VoteTask(picture, rating);
         mVoteTask.execute();
 
-        //TODO: Prüfe ob eigenes Bild oder ob ich dieses Bild bereits bewertet habe
-        //TODO: Füge Credits für Vote hinzu
-       MainMenu.user.setCreditscore(MainMenu.user.getCreditscore() + 1);
-        showNextPicture();
+        MainMenu.user.setCreditscore(MainMenu.user.getCreditscore() + 1);
     }
 
     public void showProgress(boolean on){
@@ -188,9 +246,9 @@ public class VoteLoop extends Activity {
 
         //TODO: Tags in String einfügen mit Hastag davor
         //Tags
-        if(picture.getTags() != null){
+        /*if(picture.getTags() != null){
 
-        }
+        }*/
 
         //Erstellungsdatum
         if(picture.getCreationTime() != null)
