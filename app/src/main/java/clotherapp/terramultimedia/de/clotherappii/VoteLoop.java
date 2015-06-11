@@ -39,6 +39,8 @@ public class VoteLoop extends Activity {
     private TextView tags;
     private TextView uploaded;
 
+    private int votebonus = 0;
+
     static final int VOTE_HOT = 4;
     static final int VOTE_NOT = 0;
 
@@ -56,14 +58,14 @@ public class VoteLoop extends Activity {
         btnhot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VoteAndNext();
+                VoteAndNext(5);
             }
         });
 
         btnnot2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VoteAndNext();
+                VoteAndNext(0);
             }
         });
 
@@ -117,15 +119,22 @@ public class VoteLoop extends Activity {
 
     }
 
-    private void VoteAndNext() {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //TODO: Update User, dass der neue Punktestand auch auf dem Server ist
+    }
+
+    private void VoteAndNext(int rating) {
+        votebonus ++;
         //TODO: VoteButtons gesperrt solange PictureList geladen wird
-        //TODO: ADDVote
+        //TODO: ADDVote - Testen!
+        VoteTask mVoteTask = new VoteTask(picture, rating);
+        mVoteTask.execute();
+
         //TODO: Prüfe ob eigenes Bild oder ob ich dieses Bild bereits bewertet habe
         //TODO: Füge Credits für Vote hinzu
-       /* User myUser = MainMenu.user; //je vote 1 punkt ?
-        myUser.setCreditscore(myUser.getCreditscore() + 1);
-        */
-
+       MainMenu.user.setCreditscore(MainMenu.user.getCreditscore() + 1);
         showNextPicture();
     }
 
