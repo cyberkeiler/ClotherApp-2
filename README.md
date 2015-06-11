@@ -1,5 +1,5 @@
 # ClotherApp-2
-<img src="https://raw.githubusercontent.com/cyberkeiler/ClotherApp-2/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png?token=AI8A_y4tZwW8Xr1mv-DZoQ18onXYC9Qrks5VgpNFwA%3D%3D"><br/>
+<img src="https://raw.githubusercontent.com/cyberkeiler/ClotherApp-2/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?token=AI8A__b4JAr5wuTMyi1aUfR9FJjVxkFTks5VgpRMwA%3D%3D"><br/>
 Lasst uns nochmal von vorn beginnen!<br/>
 Dies ist der zweite Versuch eine funktionierende Clother App zu erstellen. 
 <br/>
