@@ -81,8 +81,13 @@ public class RegisterActivity extends Activity {
         //Firstname & LastName
             EditText firstName = (EditText) findViewById(R.id.FirstName);
             EditText lastName = (EditText) findViewById(R.id.LastName);
-            newuser.setFirstname(firstName.getText().toString());
-            newuser.setLastname(lastName.getText().toString());
+                if (firstName.getText().toString().equals("") || lastName.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Leere Namen nicht erláubt)", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    newuser.setFirstname(firstName.getText().toString());
+                    newuser.setLastname(lastName.getText().toString());
+                }
             //TODO: gender auswahl
             Switch Genderswitch = new Switch(getApplicationContext());
                 Genderswitch.setTextOff("MALE");
