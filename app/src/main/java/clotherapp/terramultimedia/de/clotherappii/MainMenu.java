@@ -24,6 +24,7 @@ public class MainMenu extends Activity {
     public static Typeface fontawesome;
     public static Typeface clotheicons;
     public static User user = null;
+    public static int userscore = 0;
 
     private TextView textWelcome;
     private TextView textScore;
@@ -128,8 +129,8 @@ public class MainMenu extends Activity {
             //Setze Begrüßung
             if (user.getFirstname() != null)
                 textWelcome.setText("Hallo " + user.getFirstname() + "!");
-            if (user.getCreditscore() > 0)
-                textScore.setText(user.getCreditscore());
+           //if (user.getCreditscore() > 0)
+                textScore.setText("" + user.getCreditscore());
         } else {
             //kein User -> Aufforderung zum Login
             Toast.makeText(this, "Bitte einloggen!", Toast.LENGTH_SHORT).show();

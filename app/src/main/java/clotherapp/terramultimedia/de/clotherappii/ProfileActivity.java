@@ -46,9 +46,8 @@ public class ProfileActivity extends Activity {
         TextView txtReg = (TextView) findViewById(R.id.txtReg);
         txtReg.setText(MainMenu.df_TagUhrzeit.format(MainMenu.user.getCreationTime()));
 
-        //TODO: Fange fehler vom Creditscore ab // Was fürn fehler?
         TextView txtScore = (TextView) findViewById(R.id.textscore);
-        if(MainMenu.user.getCreditscore()>0) txtScore.setText(MainMenu.user.getCreditscore());
+        txtScore.setText("" + MainMenu.user.getCreditscore());
 
         //TODO: Profil editieren - right now create new user ....unschön!
         Button btnChangeProfile = (Button) findViewById(R.id.ChangeData);
