@@ -4,14 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
@@ -92,6 +93,31 @@ public class MainMenu extends Activity {
         Button not2 = (Button) findViewById(R.id.not2);
         hot2.setTypeface(MainMenu.fontawesome);
         not2.setTypeface(MainMenu.fontawesome);
+        
+        //Gestensteuerung
+        //TODO: Warum klappt das denn nicht? 
+
+        GestureDetector.OnDoubleTapListener dtListener = new GestureDetector.OnDoubleTapListener() {
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                Intent i = new Intent(MainMenu.this, VoteLoop.class);
+                overridePendingTransition(R.anim.abc_grow_fade_in_from_bottom, R.anim.abc_shrink_fade_out_from_bottom);
+                startActivity(i);
+                return false;
+            }
+
+            @Override
+            public boolean onDoubleTapEvent(MotionEvent e) {
+                return false;
+            }
+        };
+
+
     }
 
     @Override

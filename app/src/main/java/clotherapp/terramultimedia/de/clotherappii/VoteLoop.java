@@ -5,8 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -204,6 +202,8 @@ public class VoteLoop extends Activity {
             vote.setCreator(MainMenu.user);
             vote.setPicture(picture);
             vote.setRating(rating);
+
+
         }
 
         @Override
