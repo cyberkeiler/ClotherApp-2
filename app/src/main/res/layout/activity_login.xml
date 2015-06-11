@@ -39,8 +39,7 @@
         <Button android:id="@+id/email_sign_in_button" style="@style/Base.TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="16dp" android:text="@string/action_sign_in"
-            android:textStyle="bold"
-            android:background="@color/pink" />
+            android:textStyle="bold" />
 
         <Button
             style="?android:textAppearanceSmall"
@@ -48,8 +47,7 @@
             android:layout_height="wrap_content"
             android:text="Registrieren"
             android:id="@+id/btnRegister"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/pink" />
+            android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
 
