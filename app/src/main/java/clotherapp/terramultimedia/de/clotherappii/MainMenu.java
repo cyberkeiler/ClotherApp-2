@@ -118,7 +118,15 @@ public class MainMenu extends Activity {
             }
         };
 
-
+        this.findViewById(R.id.linearLayout3).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Intent i = new Intent (MainMenu.this, VoteLoop.class);
+                overridePendingTransition(R.anim.abc_grow_fade_in_from_bottom, R.anim.abc_shrink_fade_out_from_bottom);
+                startActivity(i);
+                return false;
+            }
+        });
     }
 
     @Override
