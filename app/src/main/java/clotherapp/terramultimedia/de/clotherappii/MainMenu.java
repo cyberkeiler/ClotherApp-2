@@ -21,6 +21,7 @@ import de.ovgu.cse.se.ClotherAPI.models.User;
 public class MainMenu extends Activity {
     public static IObjectProvider provider;
     public static Typeface fontawesome;
+    public static Typeface clotheicons;
     public static User user = null;
 
     private TextView textWelcome;
@@ -38,6 +39,7 @@ public class MainMenu extends Activity {
 
         //Lade Schrift für Icons!
         fontawesome = Typeface.createFromAsset( getAssets(), "fontawesome.ttf" );
+        clotheicons = Typeface.createFromAsset( getAssets(), "Clothes.ttf" );
 
         // Begrüßungstext und Creditscore
         textWelcome = (TextView) findViewById(R.id.textWelcome);

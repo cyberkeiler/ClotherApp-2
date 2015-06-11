@@ -84,8 +84,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
 
-        TextView txtAppLogo = (TextView) findViewById(R.id.txtAppLogo);
-        txtAppLogo.setTypeface(MainMenu.fontawesome);
+        //TextView txtAppLogo = (TextView) findViewById(R.id.txtAppLogo);
+        //txtAppLogo.setTypeface(MainMenu.fontawesome);
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
