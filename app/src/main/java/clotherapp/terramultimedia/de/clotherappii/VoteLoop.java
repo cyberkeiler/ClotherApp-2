@@ -25,7 +25,7 @@ import de.ovgu.cse.se.ClotherAPI.models.Picture;
 import de.ovgu.cse.se.ClotherAPI.models.Vote;
 
 
-public class VoteLoop extends Activity implements GestureDetector.OnGestureListener {
+public class VoteLoop extends Activity {
     public GetPicturesTask mPictureTask;
     public List<Picture> pictureList;
     private Picture picture;
@@ -93,6 +93,29 @@ public class VoteLoop extends Activity implements GestureDetector.OnGestureListe
         showProgress(true);
         mPictureTask = new GetPicturesTask(picture_offset);
         mPictureTask.execute();
+
+
+        this.imageview.setOnTouchListener(new OnSwipeTouchListener(this) {
+            public void onSwipeTop() {
+                Toast.makeText(VoteLoop.this, "top", Toast.LENGTH_SHORT).show();
+            }
+
+            public void onSwipeRight() {
+                Toast.makeText(VoteLoop.this, "right", Toast.LENGTH_SHORT).show();
+            }
+
+            public void onSwipeLeft() {
+                Toast.makeText(VoteLoop.this, "left", Toast.LENGTH_SHORT).show();
+            }
+
+            public void onSwipeBottom() {
+                Toast.makeText(VoteLoop.this, "bottom", Toast.LENGTH_SHORT).show();
+            }
+
+            public boolean onTouch(View v, MotionEvent event) {
+                return gestureDetector.onTouchEvent(event);
+            }
+        });
 
     }
 
@@ -172,64 +195,6 @@ public class VoteLoop extends Activity implements GestureDetector.OnGestureListe
                 imageview.setImageBitmap(bitmap);
         }
 
-    }
-    //GESTURE DETECTOR
-
-    //GestureDetectorCompat mDetector = new GestureDetectorCompat(this,this);
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    private static final int SWIPE_MIN_DISTANCE = 120;
-    private static final int SWIPE_MAX_OFF_PATH = 250;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 100;
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        Log.d("---onFling---", e1.toString() + e2.toString() + "");
-        try {
-            if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
-            return false;
-            // right to left swipe
-            if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
-                && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-            //do your code
-                VoteAndNext();
-
-
-             } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
-                && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-            //left to right flip
-                VoteAndNext();
-             }
-
-             } catch (Exception e) {
-            // nothing
-            }
-            return false;
     }
 
     public class VoteTask extends AsyncTask<Void, Void, Boolean>{
