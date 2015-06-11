@@ -1,4 +1,5 @@
 # ClotherApp-2
+<img src="https://raw.githubusercontent.com/cyberkeiler/ClotherApp-2/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png?token=AI8A_y4tZwW8Xr1mv-DZoQ18onXYC9Qrks5VgpNFwA%3D%3D"><br/>
 Lasst uns nochmal von vorn beginnen!<br/>
 Dies ist der zweite Versuch eine funktionierende Clother App zu erstellen. 
 <br/>
@@ -7,13 +8,12 @@ Wolfgang Joop<br/>
 wolfi@joop.com<br/>
 Passwort: heidi<br/>
 <br/>
-TEST-betrieb momentan nicht möglich, Troubleshooting?<br/>
-Vermutung: Asynchrone Threads (Hinweis im API-Wiki) wurde nicht erstellt, da k.A.!<br/>
-Update: TEST Betrieb erfolgreich!! Wolfi als Testuser erstellt. <br/>
+
 <br/>
 Wiki der API: https://bitbucket.org/cse_admin/se_clother_api/wiki/Home<br/>
 Floating Action Buttons: https://github.com/makovkastar/FloatingActionButton<br/>
 Font Awesome Icons: http://fortawesome.github.io/Font-Awesome/icons/<br/>
+Cloth Icons: http://www.dafont.com/es/clothes.font<br/>
 
 
 Wischfunktionen Beispiel:
