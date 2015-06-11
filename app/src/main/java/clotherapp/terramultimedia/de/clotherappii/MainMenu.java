@@ -130,7 +130,7 @@ public class MainMenu extends Activity {
             if (user.getFirstname() != null)
                 textWelcome.setText("Hallo " + user.getFirstname() + "!");
            //if (user.getCreditscore() > 0)
-                textScore.setText("" + user.getCreditscore());
+                textScore.setText("" + user.getCreditscore()+" Coins");
         } else {
             //kein User -> Aufforderung zum Login
             Toast.makeText(this, "Bitte einloggen!", Toast.LENGTH_SHORT).show();
