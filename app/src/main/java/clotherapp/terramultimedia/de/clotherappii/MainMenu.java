@@ -69,7 +69,8 @@ public class MainMenu extends Activity {
             }
         });
 
-        Button btnMyOutfits = (Button) findViewById(R.id.btnOutfits);
+        ((TextView) findViewById(R.id.bbtn_NewOutfit_Icon)).setTypeface(MainMenu.fontawesome);
+        LinearLayout btnMyOutfits = (LinearLayout) findViewById(R.id.bbtn_NewOutfit);
         btnMyOutfits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +78,10 @@ public class MainMenu extends Activity {
                 startActivity(i);
             }
         });
+
+        //Icons der deaktivierten Buttons
+        ((TextView) findViewById(R.id.bbtn_Kleiderschrank_Icon)).setTypeface(MainMenu.fontawesome);
+        ((TextView) findViewById(R.id.bbtn_MyVotes_Icon)).setTypeface(MainMenu.fontawesome);
 
         TextView appIcon = (TextView) findViewById(R.id.appIcon);
 
@@ -151,7 +156,7 @@ public class MainMenu extends Activity {
             // TODO: Check ob wirksam, ansonsten können wir diese Zeile wieder entfernen not DONE
             overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
             //TODO: change back!
-            //startActivity(i);
+            startActivity(i);
         }
     }
 

@@ -19,7 +19,7 @@
 
         <TextView
             style="@style/bbtn_icon"
-            android:text=""
+            android:text=""
             android:id="@+id/bbtn_Profile_Icon" />
 
         <TextView
@@ -50,7 +50,7 @@
 
         <TextView
             style="@style/bbtn_icon"
-            android:text=""
+            android:text=""
             android:id="@+id/bbtn_Logout_Icon"
             android:textColor="@color/white" />
 
@@ -96,12 +96,15 @@
                 android:layout_height="wrap_content" />
 
             <Button
+                android:background="@drawable/bbuton_pink"
                 android:id="@+id/btnStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="JETZT VOTEN"
-                android:textSize="24dp"
-                android:layout_gravity="center_vertical" />
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white" />
 
             <Button
                 style="@style/pink_circle"
@@ -113,7 +116,61 @@
 
         </LinearLayout>
 
-        <Button
+        <LinearLayout
+            android:background="@drawable/bbuton_default_rounded"
+            style="@style/bbtn_layout"
+            android:id="@+id/bbtn_NewOutfit"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                style="@style/bbtn_icon"
+                android:text=""
+                android:id="@+id/bbtn_NewOutfit_Icon" />
+
+            <TextView
+                style="@style/bbtn_txt"
+                android:text="Neues Outfit"
+                android:id="@+id/bbtn_NewOutfit_Txt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/bbuton_default_rounded"
+            style="@style/bbtn_layout"
+            android:id="@+id/btnn_Kleiderschrank"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                style="@style/bbtn_icon"
+                android:text=""
+                android:id="@+id/bbtn_Kleiderschrank_Icon" />
+
+            <TextView
+                style="@style/bbtn_txt"
+                android:text="Kleiderschrank"
+                android:id="@+id/bbtn_Kleiderschrank_Txt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/bbuton_default_rounded"
+            style="@style/bbtn_layout"
+            android:id="@+id/bbtn_MyVotes"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                style="@style/bbtn_icon"
+                android:text=""
+                android:id="@+id/bbtn_MyVotes_Icon" />
+
+            <TextView
+                style="@style/bbtn_txt"
+                android:text="Deine Votes"
+                android:id="@+id/bbtn_MyVotes_Txt" />
+        </LinearLayout>
+
+        <!--Button
             android:id="@+id/btnOutfits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,7 +191,7 @@
             android:layout_height="wrap_content"
             android:text="deine votes"
             android:id="@+id/button2"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal" /-->
 
     </LinearLayout>
 
