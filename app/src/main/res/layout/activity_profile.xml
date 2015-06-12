@@ -110,7 +110,23 @@
             android:weightSum="1"
             android:gravity="center">
 
-            <Button
+            <LinearLayout
+                android:background="@drawable/bbuton_default_rounded"
+                style="@style/bbtn_layout"
+                android:id="@+id/bbtn_ChangeData">
+
+                <TextView
+                    style="@style/bbtn_icon"
+                    android:text=""
+                    android:id="@+id/bbtn_ChangeData_Icon" />
+
+                <TextView
+                    style="@style/bbtn_txt"
+                    android:text="Daten ändern"
+                    android:id="@+id/bbtn_ChangeData_Txt" />
+            </LinearLayout>
+
+            <!--Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,35 +135,55 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
                 android:layout_toStartOf="@+id/btnDeleteProfile"
-                android:layout_weight="0.32" />
+                android:layout_weight="0.32" /-->
 
-            <Button
-                style="@style/button_text"
-                android:background="@drawable/red_button"
+            <LinearLayout
+                android:background="@drawable/bbuton_danger_rounded"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:text="Profil löschen"
-                android:id="@+id/btnDeleteProfile"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content"
+                android:id="@+id/bbtn_Delete"
+                android:clickable="true"
+                android:gravity="center">
 
+                <TextView
+                    style="@style/bbtn_icon"
+                    android:text=""
+                    android:id="@+id/bbtn_Delete_Icon"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    style="@style/bbtn_txt"
+                    android:text="Löschen"
+                    android:id="@+id/bbtn_Delete_Txt"
+                    android:textColor="@color/white" />
+            </LinearLayout>
         </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Zurück"
-                android:id="@+id/backtoMain"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+            <LinearLayout
+                android:background="@drawable/bbuton_inverse_rounded"
+                style="@style/bbtn_layout"
+                android:id="@+id/bbtn_BackMenu">
+
+                <TextView
+                    style="@style/bbtn_icon"
+                    android:text=""
+                    android:id="@+id/bbtn_BackMenu_Icon"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    style="@style/bbtn_txt"
+                    android:text="Zurück"
+                    android:id="@+id/bbtn_BackMenu_Txt"
+                    android:textColor="@color/white" />
+            </LinearLayout>
         </RelativeLayout>
 
     </LinearLayout>

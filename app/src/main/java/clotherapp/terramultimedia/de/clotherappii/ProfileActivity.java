@@ -5,10 +5,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +52,8 @@ public class ProfileActivity extends Activity {
         txtScore.setText("" + MainMenu.user.getCreditscore());
 
         //TODO: Profil editieren - right now create new user ....unschön!
-        Button btnChangeProfile = (Button) findViewById(R.id.ChangeData);
+        ((TextView) findViewById(R.id.bbtn_ChangeData_Icon)).setTypeface(MainMenu.fontawesome);
+        LinearLayout btnChangeProfile = (LinearLayout) findViewById(R.id.bbtn_ChangeData);
         btnChangeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +61,10 @@ public class ProfileActivity extends Activity {
             }
         });
 
-        Button btnDeleteProfile = (Button) findViewById(R.id.btnDeleteProfile);
+        //Macht Mülleimericon
+        ((TextView) findViewById(R.id.bbtn_Delete_Icon)).setTypeface(MainMenu.fontawesome);
+
+        LinearLayout btnDeleteProfile = (LinearLayout) findViewById(R.id.bbtn_Delete);
         btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +92,8 @@ public class ProfileActivity extends Activity {
 
         // Button um zurück ins Hauptmenü zu kommen
 
-        Button backToMain = (Button) findViewById(R.id.backtoMain);
+        ((TextView) findViewById(R.id.bbtn_BackMenu_Icon)).setTypeface(MainMenu.fontawesome);
+        LinearLayout backToMain = (LinearLayout) findViewById(R.id.bbtn_BackMenu);
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

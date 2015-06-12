@@ -69,13 +69,22 @@
         <item name="android:textSize">20dp</item>
     </style>
 
+    <style name="bbtn_layout">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center|center_vertical</item>
+    </style>
+
     <style name="bbtn_icon">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:layout_gravity">left</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">20dp</item>
-        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
     </style>
 
     <style name="bbtn_txt">
@@ -83,7 +92,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="android:gravity">center_horizontal|center_vertical</item>
     </style>
 </resources>
