@@ -8,21 +8,78 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="clotherapp.terramultimedia.de.clotherappii.MainMenu">
 
-    <Button
+
+    <LinearLayout
+        android:background="@drawable/bbuton_default_rounded"
+        style="@style/bbtn_layout"
+        android:id="@+id/bbtn_ChangeData">
+
+        <TextView
+            style="@style/bbtn_icon"
+            android:text=""
+            android:id="@+id/bbtn_ChangeData_Icon" />
+
+        <TextView
+            style="@style/bbtn_txt"
+            android:text="Daten ändern"
+            android:id="@+id/bbtn_ChangeData_Txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/bbuton_default_rounded"
+        style="@style/bbtn_layout"
+        android:id="@+id/bbtn_Profile">
+
+        <TextView
+            style="@style/bbtn_icon"
+            android:text=""
+            android:id="@+id/bbtn_Profile_Icon" />
+
+        <TextView
+            style="@style/bbtn_txt"
+            android:text="Dein Profil"
+            android:id="@+id/bbtn_Profile_Txt" />
+    </LinearLayout>
+
+    <!--Button
         android:id="@+id/btnprofile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:text="Dein Profil" />
+        android:text="Dein Profil" /-->
 
-    <Button
+    <LinearLayout
+        android:background="@drawable/bbuton_danger_rounded"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bbtn_Logout"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btnprofile">
+
+        <TextView
+            style="@style/bbtn_icon"
+            android:text=""
+            android:id="@+id/bbtn_Logout_Icon"
+            android:textColor="@color/white" />
+
+        <TextView
+            style="@style/bbtn_txt"
+            android:text="Logout"
+            android:id="@+id/bbtn_Logout_Txt"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <!--Button
         android:id="@+id/btnlogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/btnprofile"
-        android:text="logout" />
+        android:text="logout" /-->
 
     <LinearLayout
         android:orientation="vertical"
@@ -123,6 +180,6 @@
         android:text="Hallo"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_weight="0.77"
-        android:layout_toStartOf="@+id/btnlogout" />
+        android:layout_toStartOf="@+id/bbtn_Logout" />
 
 </RelativeLayout>

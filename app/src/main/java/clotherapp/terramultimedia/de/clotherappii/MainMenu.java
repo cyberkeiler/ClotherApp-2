@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,7 +79,8 @@ public class MainMenu extends Activity {
         TextView appIcon = (TextView) findViewById(R.id.appIcon);
 
         //Logout
-        Button btnLogout = (Button) findViewById(R.id.btnlogout);
+        ((TextView) findViewById(R.id.bbtn_Logout_Icon)).setTypeface(MainMenu.fontawesome);
+        LinearLayout btnLogout = (LinearLayout) findViewById(R.id.bbtn_Logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 //Beende Verbindung zu API
@@ -146,7 +148,8 @@ public class MainMenu extends Activity {
             //Animation zum MainMenu
             // TODO: Check ob wirksam, ansonsten können wir diese Zeile wieder entfernen not DONE
             overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_out_top);
-            startActivity(i);
+            //TODO: change back!
+            //startActivity(i);
         }
     }
 
