@@ -17,7 +17,7 @@
 
 
     <!-- Bootstrap Colors -->
-    <color name="white">#ffffffff</color>
+    <!--color name="white">#ffffffff</color-->
     <color name="black">#ff000000</color>
     <color name="bbutton_edittext_border">#ccc</color>
     <color name="bbutton_edittext_disabled">#ffe0e0e0</color>

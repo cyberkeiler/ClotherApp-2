@@ -43,11 +43,10 @@
             android:gravity="center_horizontal">
 
             <Button
+                style="@style/black_circle"
                 android:text="@string/icon_not"
                 android:id="@+id/not2"
                 android:textSize="@dimen/fonsize_big"
-                android:textColor="@color/color_white"
-                android:background="@color/color_black"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content" />
 
@@ -60,13 +59,12 @@
                 android:layout_gravity="center_vertical" />
 
             <Button
+                style="@style/pink_circle"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="@string/icon_heart"
                 android:id="@+id/hot2"
-                android:textSize="@dimen/fonsize_big"
-                android:textColor="@color/white"
-                android:background="@color/pink" />
+                android:textSize="@dimen/fonsize_big" />
 
         </LinearLayout>
 
