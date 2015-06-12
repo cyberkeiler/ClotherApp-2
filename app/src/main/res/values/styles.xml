@@ -68,4 +68,22 @@
         <item name="android:layout_margin">3dp</item>
         <item name="android:textSize">20dp</item>
     </style>
+
+    <style name="bbtn_icon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="bbtn_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+    </style>
 </resources>
