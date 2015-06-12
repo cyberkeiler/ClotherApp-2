@@ -62,7 +62,7 @@
     </style>
 
     <style name="black_circle">
-        <item name="android:background">@drawable/pink_circle_button</item>
+        <item name="android:background">@drawable/black_circle_button</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_margin">3dp</item>
