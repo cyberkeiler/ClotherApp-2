@@ -122,15 +122,15 @@
                 android:layout_weight="0.32" />
 
             <Button
-                style="?android:attr/buttonStyleSmall"
+                style="@style/button_text"
+                android:background="@drawable/red_button"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:text="Profil löschen"
                 android:id="@+id/btnDeleteProfile"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:textColor="@color/white"
-                android:background="@color/color_red" />
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
