@@ -58,7 +58,9 @@ public class MainMenu extends Activity {
             }
         });
 
-        Button btnProfile = (Button) findViewById(R.id.btnprofile);
+        //Dein Profil Button
+        ((TextView) findViewById(R.id.bbtn_Profile_Icon)).setTypeface(MainMenu.fontawesome);
+        LinearLayout btnProfile = (LinearLayout) findViewById(R.id.bbtn_Profile);
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
