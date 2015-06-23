@@ -233,16 +233,20 @@ public class VoteLoop extends Activity {
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy\n HH:mm");
 
         //Name des Creators
-        if(picture.getCreator() != null)
+        if(picture.getCreator() != null) {
             creatorname.setText(picture.getCreator().getFirstname());
-        else
+        }
+        else {
             creatorname.setText("Nulluser");
+        }
 
         //Occasion
-        if(picture.getOccasion() != null)
+        if(picture.getOccasion() != null){
             occasion.setText(picture.getOccasion().getName());
-        else
+        }
+        else {
             occasion.setText("[-keine Occasion-]");
+        }
 
         //TODO: Tags in String einfügen mit Hastag davor
         //Tags

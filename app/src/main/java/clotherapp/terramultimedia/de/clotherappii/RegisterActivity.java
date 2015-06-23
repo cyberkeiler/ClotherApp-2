@@ -94,10 +94,12 @@ public class RegisterActivity extends Activity {
 
                 Genderswitch.setTextOn("FEMALE");
                 Genderswitch.getTextOn();
-                if (Genderswitch.isChecked())
+                if (Genderswitch.isChecked()) {
                     newuser.setGender(Gender.FEMALE);
-                else
+                }
+                else {
                     newuser.setGender(Gender.MALE);
+                }
 
                 boolean res = false;
                 try {
@@ -111,13 +113,15 @@ public class RegisterActivity extends Activity {
 
                 if (res){
                     Toast.makeText(getApplicationContext(), "Profil erfolgreich erstellt", Toast.LENGTH_SHORT).show();
-                        finish();}
+                        finish();
+                }
                     //TODO: Bei erfolgreicher Registrierung soll der User automatische eingeloggt sein
                     //dazu: MainMenu.Resume() und MainMenu.user = getUser setzen!
                     //MainMenu.Resume();
                     // MainMenu.user = MainMenu.provider.getUser();
-                else
+                else {
                     Toast.makeText(getApplicationContext(), "Fehler bei Registrierung!", Toast.LENGTH_SHORT).show();
+                }
 
 
             }

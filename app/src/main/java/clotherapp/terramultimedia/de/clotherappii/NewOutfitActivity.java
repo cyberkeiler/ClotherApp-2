@@ -79,10 +79,12 @@ public class NewOutfitActivity extends Activity {
 
         lay_step_act = step_;
         for (int i=0; i < lay_steps.length; i++){
-            if(i == lay_step_act)
+            if(i == lay_step_act) {
                 lay_steps[i].setVisibility(LinearLayout.VISIBLE);
-            else
+            }
+            else {
                 lay_steps[i].setVisibility(LinearLayout.GONE);
+            }
         }
     }
 
