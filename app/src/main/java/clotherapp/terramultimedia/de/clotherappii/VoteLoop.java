@@ -251,13 +251,19 @@ public class VoteLoop extends Activity {
         }*/
 
         //Erstellungsdatum
-        if(picture.getCreationTime() != null)
+        if(picture.getCreationTime() != null) {
+
+
             uploaded.setText(df.format(picture.getCreationTime()));
+        }
 
         if(picture.getImage()!= null) {
             Bitmap bitmap = BitmapFactory.decodeByteArray(picture.getImage(), 0, picture.getImage().length);
-            if (bitmap != null)
+            if (bitmap != null) {
+
+
                 imageview.setImageBitmap(bitmap);
+            }
         }
 
     }

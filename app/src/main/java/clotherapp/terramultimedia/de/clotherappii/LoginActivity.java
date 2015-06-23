@@ -346,11 +346,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
 
         if (res)
-            Toast.makeText(this, "Wolfi hinzugefügt", Toast.LENGTH_SHORT).show();
+        {Toast.makeText(this, "Wolfi hinzugefügt", Toast.LENGTH_SHORT).show();}
 
-        else
+        else {
             Toast.makeText(this, "Fehler: Wolfi nicht hinzugefügt - Existiert evtl schon?", Toast.LENGTH_SHORT).show();
-        showProgress(false);
+            showProgress(false);
+        }
     }
 
 }

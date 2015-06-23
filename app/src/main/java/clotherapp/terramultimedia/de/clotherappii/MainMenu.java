@@ -144,8 +144,9 @@ public class MainMenu extends Activity {
         //Wid das Hauptmenü wieder aufgerufen wird hier der user gechecked
         if (user != null) {
             //Setze Begrüßung
-            if (user.getFirstname() != null)
+            if (user.getFirstname() != null) {
                 textWelcome.setText("Hallo " + user.getFirstname() + "!");
+            }
            //if (user.getCreditscore() > 0)
                 textScore.setText("" + user.getCreditscore()+" Coins");
         } else {

@@ -3,8 +3,6 @@ package clotherapp.terramultimedia.de.clotherappii;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -72,8 +70,12 @@ public class NewOutfitActivity extends Activity {
     //Funktionen zur Stepnavigation
     private void SetStep(int step_){
 
-        if(step_ > lay_steps.length) return;
-        if(step_ < 0) return;
+        if(step_ > lay_steps.length) {
+            return;
+        }
+        if(step_ < 0){
+            return;
+        }
 
         lay_step_act = step_;
         for (int i=0; i < lay_steps.length; i++){
