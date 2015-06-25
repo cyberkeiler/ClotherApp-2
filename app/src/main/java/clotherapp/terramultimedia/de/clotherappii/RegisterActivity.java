@@ -71,8 +71,8 @@ public class RegisterActivity extends Activity {
 
         //Birthday
                 //TODO: Date übernehmen...
-                EditText BDay = (EditText) findViewById (R.id.Birthday);
-                String Birthday = BDay.getText().toString();
+               // EditText BDay = (EditText) findViewById (R.id.Birthday);
+               // String Birthday = BDay.getText().toString();
                 Date myBDay = new Date(100,1,1);
                 //SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
                 //myBDay.parse(Birthday);

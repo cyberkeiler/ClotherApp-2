@@ -5,13 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
-import de.ovgu.cse.se.ClotherAPI.IObjectProvider;
-import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
-import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAddedException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotAuthenticatedException;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserNotDeletedException;
-import de.ovgu.cse.se.ClotherAPI.models.User;
 
 /**
  * Created by Toby on 26.05.15.

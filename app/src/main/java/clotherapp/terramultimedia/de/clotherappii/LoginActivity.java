@@ -25,18 +25,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import de.ovgu.cse.se.ClotherAPI.ConfigurationContext;
 import de.ovgu.cse.se.ClotherAPI.ObjectProviderFactory;
 import de.ovgu.cse.se.ClotherAPI.exceptions.UserdataNotCorrectException;
-import de.ovgu.cse.se.ClotherAPI.models.Gender;
-import de.ovgu.cse.se.ClotherAPI.models.User;
 
 
 /**
@@ -322,7 +317,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
+    /* was used to create a test user manually
     private void CreateTestData() {
+
         Toast.makeText(this, "Testuser: Wolfi Joop wird erstellt", Toast.LENGTH_SHORT).show();
         User newuser = new User();
         newuser.setEmail("wolfi@joop.com");
@@ -353,6 +350,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(false);
         }
     }
-
+*/
 }
 

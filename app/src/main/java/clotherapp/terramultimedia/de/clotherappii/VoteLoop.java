@@ -36,15 +36,15 @@ public class VoteLoop extends Activity {
     private ProgressBar progressBar;
 
     private ImageView imageview;
-    private TextView creatorname;
+    private TextView creator_name;
     private TextView creatoricon;
     private TextView occasion;
-    private TextView tags;
+    //private TextView tags;
     private TextView uploaded;
 
     TextView ResponseIcon;
 
-    private int votebonus = 0;
+    // private int votebonus = 0;
 
     static final int VOTE_HOT = 4;
     static final int VOTE_NOT = 0;
@@ -85,9 +85,9 @@ public class VoteLoop extends Activity {
         //Bilddetails
         imageview = (ImageView) findViewById(R.id.imageView2);
         creatoricon = (TextView) findViewById(R.id.txtPictureUsericon);
-        creatorname = (TextView) findViewById(R.id.txtPictureUsername);
+        creator_name = (TextView) findViewById(R.id.txtPictureUsername);
         occasion = (TextView) findViewById(R.id.txtPictureOccasion);
-        tags = (TextView) findViewById(R.id.txtPictureTags);
+        //tags = (TextView) findViewById(R.id.txtPictureTags);
         uploaded = (TextView) findViewById(R.id.txtPictureDate);
 
         //Icon setzen
@@ -187,7 +187,7 @@ public class VoteLoop extends Activity {
     }
 
     private void sendVote(int rating) {
-        votebonus ++;
+        //votebonus ++;
         //TODO: VoteButtons gesperrt solange PictureList geladen wird
         //TODO: ADDVote - Testen!
         VoteTask mVoteTask = new VoteTask(picture, rating);
@@ -234,10 +234,10 @@ public class VoteLoop extends Activity {
 
         //Name des Creators
         if(picture.getCreator() != null) {
-            creatorname.setText(picture.getCreator().getFirstname());
+            creator_name.setText(picture.getCreator().getFirstname());
         }
         else {
-            creatorname.setText("Nulluser");
+            creator_name.setText("Nulluser");
         }
 
         //Occasion

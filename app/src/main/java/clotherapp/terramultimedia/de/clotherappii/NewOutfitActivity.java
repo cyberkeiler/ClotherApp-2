@@ -21,9 +21,9 @@ import de.ovgu.cse.se.ClotherAPI.models.Occasion;
 
 
 public class NewOutfitActivity extends Activity {
-    private String[] TestItems;
+    //private String[] TestItems;
     //private Boolean mPicturesTask = null;
-    private ListView occ_list;
+    //private ListView occ_list;
     private LinearLayout[] lay_steps;
     private int lay_step_act = 0;
 
@@ -55,7 +55,7 @@ public class NewOutfitActivity extends Activity {
             }
         });
 
-        occ_list = (ListView) findViewById(R.id.OccListView);
+        //occ_list = (ListView) findViewById(R.id.OccListView);
 
         //TODO: Dieser GetOccaisonTask verhindert das Bedienen der App - Nicht richtig Asynchron implementiert- FIXEN!!
         try {

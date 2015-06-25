@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -83,7 +82,7 @@ public class MainMenu extends Activity {
         ((TextView) findViewById(R.id.bbtn_Kleiderschrank_Icon)).setTypeface(MainMenu.fontawesome);
         ((TextView) findViewById(R.id.bbtn_MyVotes_Icon)).setTypeface(MainMenu.fontawesome);
 
-        TextView appIcon = (TextView) findViewById(R.id.appIcon);
+        //TextView appIcon = (TextView) findViewById(R.id.appIcon);
 
         //Logout
         ((TextView) findViewById(R.id.bbtn_Logout_Icon)).setTypeface(MainMenu.fontawesome);
@@ -107,7 +106,7 @@ public class MainMenu extends Activity {
         //Gestensteuerung
         //TODO: Warum klappt das denn nicht? 
 
-        GestureDetector.OnDoubleTapListener dtListener = new GestureDetector.OnDoubleTapListener() {
+        /*GestureDetector.OnDoubleTapListener dtListener = new GestureDetector.OnDoubleTapListener() {
             @Override
             public boolean onSingleTapConfirmed(MotionEvent e) {
                 return false;
@@ -125,7 +124,7 @@ public class MainMenu extends Activity {
             public boolean onDoubleTapEvent(MotionEvent e) {
                 return false;
             }
-        };
+        };*/
 
         this.findViewById(R.id.linearLayout3).setOnTouchListener(new View.OnTouchListener() {
             @Override
